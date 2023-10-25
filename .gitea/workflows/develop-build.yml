@@ -37,9 +37,9 @@ jobs:
           firstString=${{ github.ref_name }}
           secondString="build"
           echo ::set-env name=BUILD_BRANCH::${firstString/develop\//"$secondString"\/}
-      - name: status
+      - name: if diff
         run: |
-          ls
+          git diff
       - name: push
         run: |
           git add -A
