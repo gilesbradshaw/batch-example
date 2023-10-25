@@ -23,7 +23,7 @@ jobs:
       - uses: http://sigyl.com:3000/actions/setup-node@v3
         with:
           node-version: '20'
-      - uses: http://sigyl.com:3000/actions/batch2yaml@main
+      - uses: http://sigyl.com:3000/actions/batch2yaml@master
         with:
           action: xml
           path: '.'
