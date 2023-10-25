@@ -41,6 +41,8 @@ jobs:
         run: |
           if [[ $(git diff | wc -c) -eq 0 ]]; then
             echo "::debug::no chnages";
+          else
+            echo "::debug::chnages";
           fi
       - name: push
         run: |
