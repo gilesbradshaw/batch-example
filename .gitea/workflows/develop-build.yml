@@ -38,13 +38,15 @@ jobs:
           secondString="build"
           echo ::set-env name=BUILD_BRANCH::${firstString/develop\//"$secondString"\/}
       - name: if diff
+        id: ifdiff
         run: |
           if [[ $(git diff | wc -c) -eq 0 ]]; then
-            echo "::debug::no chnages";
+            echo "changes=false\n" >> $GITHUB_OUTPUT
           else
-            echo "::debug::chnages";
+            echo "changes=true\n" >> $GITHUB_OUTPUT
           fi
       - name: push
+        if: steps.diff.outputs.changes == true 
         run: |
           git add -A
           git commit -a -m "${{ github.ref_name }} -> ${{ env.BUILD_BRANCH }} "
@@ -87,7 +89,12 @@ jobs:
           pr=$(../tea pr ls -f=base,head,index -o csv | grep "\"main\",\"${{ github.ref_name }}\"" | tr -d ' ' | tr "," "\n" | head -n 4 | tail -1)
           export PR="${pr//[\"\'\`]/}"
           echo ::set-env name=PR::$PR
-      - name: make pull request comment
+      - name: make pull request comment changes
+        if: steps.diff.outputs.changes == true 
         run: |
           ../tea c $PR "this branch has been built on [${{ env.BUILD_BRANCH }}](${{ github.serverUrl }}/${{ github.repository }}/src/branch/${{ env.BUILD_BRANCH }})"
+      - name: make pull request comment changes
+        if: steps.diff.outputs.changes == false 
+        run: |
+          ../tea c $PR "nothing to build"
           
