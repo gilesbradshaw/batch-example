@@ -23,7 +23,7 @@ jobs:
       - uses: http://sigyl.com:3000/actions/setup-node@v3
         with:
           node-version: '20'
-      - uses: http://sigyl.com:3000/actions/batch2yaml@master
+      - uses: http://sigyl.com:3000/actions/batch2yaml@main
         with:
           action: xml
           path: '.'
@@ -72,15 +72,15 @@ jobs:
       - name: make PR
         run: |
           ../tea pr ls -f=base,head -o=csv
-          if [[ $(../tea pr ls -f=base,head -o=csv | grep "\"master\",\"${{ github.ref_name }}\"" | head -c1 | wc -c) -eq 0 ]]; then
-            ../tea pr c --base=master --head=${{ github.ref_name }} --description="
+          if [[ $(../tea pr ls -f=base,head -o=csv | grep "\"main\",\"${{ github.ref_name }}\"" | head -c1 | wc -c) -eq 0 ]]; then
+            ../tea pr c --base=main --head=${{ github.ref_name }} --description="
           development pull request 
           this PR is will been built on [${{ github.ref_name }}](${{ github.serverUrl }}/${{ github.repository }}/src/branch/${{ env.BUILD_BRANCH }})
             " -t="WIP: ${{ github.event.head_commit.message }}"
           fi
       - name: get PR number
         run: |
-          pr=$(../tea pr ls -f=base,head,index -o csv | grep "\"master\",\"${{ github.ref_name }}\"" | tr -d ' ' | tr "," "\n" | head -n 4 | tail -1)
+          pr=$(../tea pr ls -f=base,head,index -o csv | grep "\"main\",\"${{ github.ref_name }}\"" | tr -d ' ' | tr "," "\n" | head -n 4 | tail -1)
           export PR="${pr//[\"\'\`]/}"
           echo ::set-env name=PR::$PR
       - name: make pull request comment

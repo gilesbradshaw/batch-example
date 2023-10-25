@@ -5,7 +5,7 @@ on:
     types:
       - reopened
     branches:
-      - 'master'
+      - 'main'
 
 jobs:
   build-branch:
@@ -18,7 +18,7 @@ jobs:
       - uses: http://sigyl.com:3000/actions/setup-node@v3
         with:
           node-version: '20'
-      - uses: http://sigyl.com:3000/actions/batch2yaml@master
+      - uses: http://sigyl.com:3000/actions/batch2yaml@main
         with:
           action: xml
           path: '.'
@@ -27,7 +27,7 @@ jobs:
           curl https://dl.gitea.com/tea/0.9.2/tea-0.9.2-linux-386 --output tea
           chmod +x ./tea
           ./tea login add -n=this --url=${{ github.server_url}} -t=${{ secrets.BOT_TOKEN }}
-          echo ::set-env name=PR::$(./tea pr ls -f=base,head,index | grep "| master | ${{ github.ref_name }} |" | tr -d ' ' | tr "|" "\n" | head -n 4 | tail -1)
+          echo ::set-env name=PR::$(./tea pr ls -f=base,head,index | grep "| main | ${{ github.ref_name }} |" | tr -d ' ' | tr "|" "\n" | head -n 4 | tail -1)
           rm ./tea
       - name: get build branch name
         run: |
