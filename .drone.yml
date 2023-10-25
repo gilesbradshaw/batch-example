@@ -30,7 +30,7 @@ steps:
   image: sigyl/zone-10-batch2yaml:latest
   when:
     branch:
-    - master
+    - main
     - product-development
   commands:
     - node /app/servers/apps/batch2yaml/build/index.js . xml
@@ -51,7 +51,7 @@ steps:
 - name: "git - status"
   when:
     branch:
-    - master
+    - main
     - deployed
   image: alpine/git:latest
   commands:
@@ -62,7 +62,7 @@ steps:
 - name: "git - deployed"
   when:
     branch:
-    - master
+    - main
   image: alpine/git:latest
   commands:
     - git config credential.helper '!f() { sleep 1; echo "username=$${GIT_USER}"; echo "password=$${GIT_PASSWORD}"; }; f'
@@ -133,7 +133,7 @@ volumes:
 trigger:
   branch:
   - format-branch
-  - master
+  - main
   - product-development
   event:
   - push

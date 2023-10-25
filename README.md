@@ -4,6 +4,20 @@ This repository will store and allow versioning and approval of a batch configur
 
 This repository **only** contains exported configuration.  It does not contain any binary files (eg equipment-model.cfg nor system state or log files).  These are excluded using the **.gitignore** file.
 
+
+you will need to:
+
+give a bot user (eg batch-bot) write access
+
+generate a new token for this user https://sigyl.com/git/user/settings/applications with 
+
+* write:issue
+* write:repository
+* read:user
+
+set an action secret called BOT_TOKEN to it
+
+
 ## change process
 
 tea is here (i had to change docker file to just be based on node:latest)

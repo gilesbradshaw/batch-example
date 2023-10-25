@@ -6,7 +6,7 @@ on:
       - closed
       - deleted
     branches:
-      - master
+      - main
 
 jobs:
   delete-develop:
