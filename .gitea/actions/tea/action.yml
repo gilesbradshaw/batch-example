@@ -1,4 +1,4 @@
-name: get tea
+name: tea
 description: gets tea and logs in
 inputs:
   token:

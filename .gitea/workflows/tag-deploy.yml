@@ -12,8 +12,6 @@ jobs:
         with:
           token: ${{ secrets.BOT_TOKEN }}
           fetch-depth: '10'
-      - name: ls
-        run: ls
       - uses: actions/setup-node@v3
         with:
           node-version: '20'
