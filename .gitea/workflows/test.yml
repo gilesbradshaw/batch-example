@@ -9,3 +9,8 @@ jobs:
   included:
     needs: first
     uses: ./.gitea/workflows/include.yaml
+  second:
+    needs: included
+    steps:
+      - name: one
+        run: echo done
