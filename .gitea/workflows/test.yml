@@ -1,0 +1,26 @@
+on:
+  push:
+
+jobs:
+  included:
+    uses: ./.gitea/workflows/include.yaml
+
+  third:
+    runs-on: debian
+
+    needs:
+      - included
+
+    steps:
+      - name: Step three
+        run: echo "Step three"
+
+  fourth:
+    runs-on: debian
+
+    needs:
+      - third
+
+    steps:
+      - name: Step four
+        run: echo "Step four"

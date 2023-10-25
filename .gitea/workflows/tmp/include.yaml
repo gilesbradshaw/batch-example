@@ -1,0 +1,21 @@
+on:
+  workflow_call:
+
+
+jobs:
+  first:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Step one
+        run: echo "Step one"
+
+  second:
+    runs-on: ubuntu-latest
+
+    needs:
+      - first
+
+    steps:
+      - name: Step two
+        run: echo "Step two"
