@@ -9,6 +9,8 @@ jobs:
   included:
     needs: first
     uses: ./.gitea/workflows/include.yaml
+    secrets:
+      token: ${{ secrets.BOT_TOKEN }}
   second:
     needs: included
     steps:
