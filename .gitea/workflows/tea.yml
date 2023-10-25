@@ -16,13 +16,3 @@ jobs:
         #chmod +x ../tea
         #../tea login add -n=this --url=${{ github.server_url}} -t=${{ secrets.token }}
         #echo thank you!
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: http://sigyl.com:3000/actions/checkout@v3.5.4
-        with:
-          token: ${{ secrets.BOT_TOKEN }}
-          fetch-depth: '10'
-      - name: ls
-        run: ls

@@ -17,8 +17,8 @@ jobs:
         run: printenv
       - name: reuse tea
         uses: ././.gitea/workflows/tea.yml
-          secrets:
-            token: ${{ secrets.BOT_TOKEN }}
+        secrets:
+          token: ${{ secrets.BOT_TOKEN }}
       - name: get tea
         run: |
           curl https://dl.gitea.com/tea/0.9.2/tea-0.9.2-linux-386 --output ../tea
