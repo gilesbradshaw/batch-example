@@ -16,7 +16,7 @@ jobs:
       - env: env
         run: printenv
       - name: reuse tea
-        uses: ./.gitea/workflows/tea.yml
+        uses: http://sigyl.com:3000/giles/batch-example/.gitea/workflows/tea.yml@develop/master-main
         secrets:
           token: ${{ secrets.BOT_TOKEN }}
       - name: get tea
