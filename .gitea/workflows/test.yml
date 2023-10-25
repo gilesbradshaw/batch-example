@@ -4,10 +4,10 @@ on:
 jobs:
   first:
     steps:
-      - uses: http://sigyl.com:3000/actions/checkout@v3.5.4
+      - uses: ./.gitea/actions/tea
         with:
           token: ${{ secrets.BOT_TOKEN }}
-      - uses: ./.gitea/actions/tea
+      - uses: http://sigyl.com:3000/actions/checkout@v3.5.4
         with:
           token: ${{ secrets.BOT_TOKEN }}
       - name: result
