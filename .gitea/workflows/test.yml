@@ -21,5 +21,6 @@ jobs:
       - name: one
         run: |
           ls ./tea
+          chmod +x ./tea/tea
           ./tea/tea r ls -o=simple
           echo done
