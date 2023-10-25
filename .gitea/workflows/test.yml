@@ -14,11 +14,12 @@ jobs:
   second:
     needs: included
     steps:
-      - uses: actions/download-artifact@v3.0.2
+      - uses: actions/download-artifact@v3
         with:
           name: tea
           path: tea
       - name: one
         run: |
           ls
+          ./tea r ls -o=simple
           echo done

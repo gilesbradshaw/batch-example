@@ -8,7 +8,6 @@ on:
 jobs:
   first:
     runs-on: ubuntu-latest
-
     steps:
     - name: get tea
       run: |
@@ -18,7 +17,7 @@ jobs:
         ./tea login add -n=this --url=${{ github.server_url}} -t=${{ secrets.token }}
         echo thank you!
 
-    - uses: actions/upload-artifact@main
+    - uses: actions/upload-artifact@v3
       with:
         name: tea
         path: tea
