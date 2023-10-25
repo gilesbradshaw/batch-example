@@ -18,7 +18,7 @@ jobs:
         with:
           name: my-artifact
           path: ../tea
-     - name: one
+      - name: one
         run: |
           ls ..
           echo done
