@@ -2,5 +2,10 @@ on:
   push:
 
 jobs:
+  first:
+    steps:
+      - name: one
+        run: echo done
   included:
+    needs: first
     uses: ./.gitea/workflows/include.yaml
