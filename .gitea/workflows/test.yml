@@ -3,5 +3,4 @@ on:
 
 jobs:
   included:
-    steps:
-      - uses: ./.gitea/workflows/include.yaml
+    uses: ./.gitea/workflows/include.yaml
