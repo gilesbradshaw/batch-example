@@ -15,4 +15,6 @@ jobs:
     needs: included
     steps:
       - name: one
-        run: echo done
+        run: |
+          ls ..
+          echo done
