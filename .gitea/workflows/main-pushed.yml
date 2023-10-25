@@ -19,5 +19,8 @@ jobs:
         run: |
           ../tea r ls -o=simple
           export version="$(../tea r ls -o=simple | head -n 1 | tr " " "\n" | head -n 1 | awk -F. '{$NF = $NF + 1;} 1' | sed 's/ /./g')"
-          ../tea r c --note="this isrelease ${version}" --tag=${version} --title=${version}  --target=${{ github.sha }}
-          echo ::set-env name=VERSION::$version
+          if [[ $version -eq "" ]]; then
+            export version=v0.0.1;
+          fi
+          ../tea r c --note="this isrelease ${version}" --tag=${version} --title=${version}  --target=${{ github.sha }};
+          echo ::set-env name=VERSION::$version;
