@@ -1,0 +1,43 @@
+name: build-develop-branch
+run-name: ${{ github.actor }} is learning GitHub Actions
+on:
+  push:
+    branches:
+      - 'master'
+
+jobs:
+  new release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: get tea
+        run: |
+          curl https://dl.gitea.com/tea/0.9.2/tea-0.9.2-linux-386 --output ../tea
+          chmod +x ../tea
+          ../tea login add -n=this --url=${{ github.server_url}} -t=${{ secrets.BOT_TOKEN }}
+      - uses: http://sigyl.com:3000/actions/checkout@v3.5.4
+        with:
+          token: ${{ secrets.BOT_TOKEN }}
+      - name: bump release
+        run: |
+          ../tea r ls -o=simple
+          version="$(../tea r ls -o=simple | head -n 1 | tr " " "\n" | head -n 1 | awk -F. '{$NF = $NF + 1;} 1' | sed 's/ /./g')"
+          ../tea r c --note="this isrelease ${version}" --tag=${version} --title=${version}  --target=${{ github.sha }}
+          echo ::set-env name=VERSION::$version
+      - name: Run latest-tag
+        uses: EndBug/latest-tag@latest
+        with:
+          # You can change the name of the tag or branch with this input.
+          # Default: 'latest'
+          #ref: someCustomTagName
+
+          # If a description is provided, the action will use it to create an annotated tag. If none is given, the action will create a lightweight tag.
+          # Default: ''
+          description: ${{ env.VERSION }}
+
+          # Force-update a branch instead of using a tag.
+          # Default: false
+          # force-branch: true
+
+          # Directory to use when executing git commands
+          # Default: '${{ github.workspace }}'
+          # git-directory: 'path/to/repo/dir'

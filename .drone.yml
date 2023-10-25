@@ -1,0 +1,141 @@
+---
+kind: pipeline
+type: docker
+name: convert
+
+platform:
+  os: linux
+  arch: amd64
+
+clone:
+  disable: false
+
+steps:
+- name: "git - pre format"
+  when:
+    branch:
+    - format-branch
+  image: alpine/git:latest
+  commands:
+    - git config credential.helper '!f() { sleep 1; echo "username=$${GIT_USER}"; echo "password=$${GIT_PASSWORD}"; }; f'
+    - git fetch
+    - git checkout -b product-development
+    - git merge --squash --no-commit --strategy-option=theirs format-branch
+  environment:
+    GIT_PASSWORD:
+      from_secret: GIT_PASSWORD
+    GIT_USER:
+      from_secret: GIT_USER
+- name: "convert to xml"
+  image: sigyl/zone-10-batch2yaml:latest
+  when:
+    branch:
+    - master
+    - product-development
+  commands:
+    - node /app/servers/apps/batch2yaml/build/index.js . xml
+  volumes:
+  - name: dockersock
+    path: /var/run
+- name: "convert to yml"
+  image: sigyl/zone-10-batch2yaml:latest
+  when:
+    branch:
+    - format-branch
+  commands:
+    - node /app/servers/apps/batch2yaml/build/index.js . delete
+    - node /app/servers/apps/batch2yaml/build/index.js . yml
+  volumes:
+  - name: dockersock
+    path: /var/run
+- name: "git - status"
+  when:
+    branch:
+    - master
+    - deployed
+  image: alpine/git:latest
+  commands:
+    - git status
+  volumes:
+  - name: dockersock
+    path: /var/run
+- name: "git - deployed"
+  when:
+    branch:
+    - master
+  image: alpine/git:latest
+  commands:
+    - git config credential.helper '!f() { sleep 1; echo "username=$${GIT_USER}"; echo "password=$${GIT_PASSWORD}"; }; f'
+    - git add -A
+    - git commit -m "deploying- $${DRONE_COMMIT_MESSAGE}"
+    - git push -f origin HEAD:deployed
+  environment:
+    GIT_PASSWORD:
+      from_secret: GIT_PASSWORD
+    GIT_USER:
+      from_secret: GIT_USER
+- name: "git - product-development - build"
+  when:
+    branch:
+    - product-development
+  image: alpine/git:latest
+  commands:
+    - git config credential.helper '!f() { sleep 1; echo "username=$${GIT_USER}"; echo "password=$${GIT_PASSWORD}"; }; f'
+    - git add -A
+    - git commit -m "$${DRONE_COMMIT_MESSAGE}"
+    - git push -f origin HEAD:product-development-build
+  environment:
+    GIT_PASSWORD:
+      from_secret: GIT_PASSWORD
+    GIT_USER:
+      from_secret: GIT_USER
+- name: "git - product-development"
+  when:
+    branch:
+    - format-branch
+  image: alpine/git:latest
+  commands:
+    - git config credential.helper '!f() { sleep 1; echo "username=$${GIT_USER}"; echo "password=$${GIT_PASSWORD}"; }; f'
+    - git add -A
+    - git commit -m "converted to yml - $${DRONE_COMMIT_MESSAGE}"
+    - git push -f origin HEAD:product-development
+  environment:
+    GIT_PASSWORD:
+      from_secret: GIT_PASSWORD
+    GIT_USER:
+      from_secret: GIT_USER
+
+  volumes:
+  - name: dockersock
+    path: /var/run
+
+services:
+- name: docker
+  image: docker:19.03.12-dind@sha256:8dded163e463f4a59bf305b3dca98e312b2cfb89a43da3872e48f95a7554c48f
+  privileged: true
+  volumes:
+  - name: dockersock
+    path: /var/run
+  - name: ca
+    path: /etc/docker/certs.d
+  - name: daemonjson
+    path: /etc/docker/daemon.json
+volumes:
+- name: dockersock
+  temp: {}
+- name: ca
+  host:
+    path: /etc/docker/certs.d
+- name: daemonjson
+  host:
+    path: /etc/docker/daemon.json
+
+trigger:
+  branch:
+  - format-branch
+  - master
+  - product-development
+  event:
+  - push
+  
+
