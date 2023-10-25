@@ -11,6 +11,9 @@ jobs:
         id: foo
         with:
           who-to-greet: gilesy!
+        secrets:
+          token: ${{ secrets.BOT_TOKEN }}
+
       - name: result
         run: echo random-number ${{ steps.foo.outputs.random-number }}
   included:
