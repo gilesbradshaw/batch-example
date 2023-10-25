@@ -11,11 +11,11 @@ jobs:
   build-branch:
     runs-on: ubuntu-latest
     steps:
-      - uses: ./.gitea/actions/tea
-        with:
-          token: ${{ secrets.BOT_TOKEN }}
       # https://github.com/RouxAntoine/checkout/tree/v3.5.4
       - uses: http://sigyl.com:3000/actions/checkout@v3.5.4
+        with:
+          token: ${{ secrets.BOT_TOKEN }}
+      - uses: ./.gitea/actions/tea
         with:
           token: ${{ secrets.BOT_TOKEN }}
       - uses: http://sigyl.com:3000/actions/setup-node@v3
