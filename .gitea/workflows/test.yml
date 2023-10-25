@@ -15,7 +15,7 @@ jobs:
       - name: result
         run: |
           echo random-number ${{ steps.foo.outputs.random-number }}
-          ../tea r ls -o=simple
+          ../tea pr ls -o=simple
   included:
     needs: first
     uses: ./.gitea/workflows/include.yaml
