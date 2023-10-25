@@ -5,23 +5,11 @@ jobs:
   first:
     steps:
       - uses: http://sigyl.com:3000/actions/checkout@v3.5.4
-          with:
-            token: ${{ secrets.BOT_TOKEN }}
-  included:
-    needs: first
-    uses: ./.gitea/workflows/include.yaml
-    secrets:
-      token: ${{ secrets.BOT_TOKEN }}
-  second:
-    needs: included
-    steps:
-      - uses: actions/download-artifact@v3
         with:
-          name: tea
-          path: tea
-      - name: one
+          token: ${{ secrets.BOT_TOKEN }}
+      - uses: ./.gitea/actions/tea
+        with:
+          token: ${{ secrets.BOT_TOKEN }}
+      - name: result
         run: |
-          ls ./tea
-          chmod +x ./tea/tea
-          ./tea/tea r ls -o=simple
-          echo done
+          ../tea pr ls -o=simple

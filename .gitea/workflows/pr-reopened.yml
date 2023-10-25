@@ -11,6 +11,9 @@ jobs:
   build-branch:
     runs-on: ubuntu-latest
     steps:
+      - uses: ./.gitea/actions/tea
+        with:
+          token: ${{ secrets.BOT_TOKEN }}
       # https://github.com/RouxAntoine/checkout/tree/v3.5.4
       - uses: http://sigyl.com:3000/actions/checkout@v3.5.4
         with:
@@ -24,11 +27,7 @@ jobs:
           path: '.'
       - name: get PR number
         run: |
-          curl https://dl.gitea.com/tea/0.9.2/tea-0.9.2-linux-386 --output tea
-          chmod +x ./tea
-          ./tea login add -n=this --url=${{ github.server_url}} -t=${{ secrets.BOT_TOKEN }}
-          echo ::set-env name=PR::$(./tea pr ls -f=base,head,index | grep "| main | ${{ github.ref_name }} |" | tr -d ' ' | tr "|" "\n" | head -n 4 | tail -1)
-          rm ./tea
+          echo ::set-env name=PR::$(.../tea pr ls -f=base,head,index | grep "| main | ${{ github.ref_name }} |" | tr -d ' ' | tr "|" "\n" | head -n 4 | tail -1)
       - name: get build branch name
         run: |
           firstString=${{ github.ref_name }}
@@ -48,7 +47,5 @@ jobs:
 
       - name: make pull request comment
         run: |
-          curl https://dl.gitea.com/tea/0.9.2/tea-0.9.2-linux-386 --output tea
-          chmod +x ./tea
-          ./tea c $PR "this branch has been built on [${{ env.BUILD_BRANCH }}](${{ github.serverUrl }}/${{ github.repository }}/src/branch/${{ env.BUILD_BRANCH }})"
+          ../tea c $PR "this branch has been built on [${{ env.BUILD_BRANCH }}](${{ github.serverUrl }}/${{ github.repository }}/src/branch/${{ env.BUILD_BRANCH }})"
           
