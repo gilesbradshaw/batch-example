@@ -12,4 +12,5 @@ jobs:
           token: ${{ secrets.BOT_TOKEN }}
       - name: result
         run: |
+          pwd
           ../tea pr ls -o=simple
