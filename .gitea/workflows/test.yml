@@ -16,9 +16,9 @@ jobs:
     steps:
       - uses: actions/download-artifact@master
         with:
-          name: my-artifact
-          path: ../tea
+          name: tea
+          path: tea
       - name: one
         run: |
-          ls ..
+          ls
           echo done
