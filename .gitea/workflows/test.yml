@@ -7,30 +7,9 @@ jobs:
       - uses: http://sigyl.com:3000/actions/checkout@v3.5.4
         with:
           token: ${{ secrets.BOT_TOKEN }}
-      - uses: ./.gitea/actions/hello-world
-        id: foo
+      - uses: ./.gitea/actions/get-tea
         with:
-          who-to-greet: gilesy!
           token: ${{ secrets.BOT_TOKEN }}
       - name: result
         run: |
-          echo random-number ${{ steps.foo.outputs.random-number }}
           ../tea pr ls -o=simple
-  included:
-    needs: first
-    uses: ./.gitea/workflows/include.yaml
-    secrets:
-      token: ${{ secrets.BOT_TOKEN }}
-  second:
-    needs: included
-    steps:
-      - uses: actions/download-artifact@v3
-        with:
-          name: tea
-          path: tea
-      - name: one
-        run: |
-          ls ./tea
-          chmod +x ./tea/tea
-          ./tea/tea r ls -o=simple
-          echo done
