@@ -5,6 +5,13 @@ on:
     branches:
       - 'develop/**'
 jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+      - name: json
+        run: echo $JSON
+        env:
+          JSON: ${{ toJSON(github) }}
   build-branch:
     runs-on: ubuntu-latest
     steps:
