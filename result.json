@@ -1,32 +1,12 @@
 {
   "event": {
-    "after": "c8a3f58fc7a7fa40f9191bf04b4cf5bfb6af6531",
-    "before": "fc24f56872717dfa2fc74dffb031b3131d93a5a0",
+    "after": "c66f20d3c0f95a1e4124d03b15708a6ff77750a4",
+    "before": "c8a3f58fc7a7fa40f9191bf04b4cf5bfb6af6531",
     "commits": [
       {
-        "added": [],
-        "author": {
-          "email": "giles.bradshaw@sigyl.com",
-          "name": "giles",
-          "username": "giles"
-        },
-        "committer": {
-          "email": "giles.bradshaw@sigyl.com",
-          "name": "giles",
-          "username": "giles"
-        },
-        "id": "c8a3f58fc7a7fa40f9191bf04b4cf5bfb6af6531",
-        "message": "Merge pull request '....' (#12) from develop/somemoretodo into main\n\nReviewed-on: https://sigyl.com/git/actions/batch-example/pulls/12\n",
-        "modified": [
-          ".github/workflows/develop-pr-closed.yml"
+        "added": [
+          "result.json"
         ],
-        "removed": [],
-        "timestamp": "2023-10-26T19:49:30Z",
-        "url": "https://sigyl.com/git/actions/batch-example/commit/c8a3f58fc7a7fa40f9191bf04b4cf5bfb6af6531",
-        "verification": null
-      },
-      {
-        "added": [],
         "author": {
           "email": "giles.bradshaw@sigyl.com",
           "name": "giles",
@@ -37,16 +17,18 @@
           "name": "giles",
           "username": "giles"
         },
-        "id": "c6d305f760e26ec468e52011d4cb47e9ac3757da",
-        "message": "Merge branch 'main' into develop/somemoretodo\n",
+        "id": "c66f20d3c0f95a1e4124d03b15708a6ff77750a4",
+        "message": "Merge pull request '.....' (#13) from develop/somemoretodo into main\n\nReviewed-on: https://sigyl.com/git/actions/batch-example/pulls/13\n",
         "modified": [],
         "removed": [],
-        "timestamp": "2023-10-26T19:49:23Z",
-        "url": "https://sigyl.com/git/actions/batch-example/commit/c6d305f760e26ec468e52011d4cb47e9ac3757da",
+        "timestamp": "2023-10-26T19:55:44Z",
+        "url": "https://sigyl.com/git/actions/batch-example/commit/c66f20d3c0f95a1e4124d03b15708a6ff77750a4",
         "verification": null
       },
       {
-        "added": [],
+        "added": [
+          "result.json"
+        ],
         "author": {
           "email": "giles.bradshaw@sigyl.com",
           "name": "gilesb",
@@ -54,23 +36,23 @@
         },
         "committer": {
           "email": "giles.bradshaw@sigyl.com",
-          "name": "gilesb",
+          "name": "giles",
           "username": "giles"
         },
-        "id": "9899e8eacc0706aa11c9a7dab6038775fd63dd05",
-        "message": "....\n",
-        "modified": [
-          ".github/workflows/develop-pr-closed.yml"
-        ],
+        "id": "0ceb9e19b65c1f8007a2abc6cda6879bfd1d4bf2",
+        "message": ".....\n",
+        "modified": [],
         "removed": [],
-        "timestamp": "2023-10-26T20:48:43+01:00",
-        "url": "https://sigyl.com/git/actions/batch-example/commit/9899e8eacc0706aa11c9a7dab6038775fd63dd05",
+        "timestamp": "2023-10-26T20:54:46+01:00",
+        "url": "https://sigyl.com/git/actions/batch-example/commit/0ceb9e19b65c1f8007a2abc6cda6879bfd1d4bf2",
         "verification": null
       }
     ],
-    "compare_url": "https://sigyl.com/git/actions/batch-example/compare/fc24f56872717dfa2fc74dffb031b3131d93a5a0...c8a3f58fc7a7fa40f9191bf04b4cf5bfb6af6531",
+    "compare_url": "https://sigyl.com/git/actions/batch-example/compare/c8a3f58fc7a7fa40f9191bf04b4cf5bfb6af6531...c66f20d3c0f95a1e4124d03b15708a6ff77750a4",
     "head_commit": {
-      "added": [],
+      "added": [
+        "result.json"
+      ],
       "author": {
         "email": "giles.bradshaw@sigyl.com",
         "name": "giles",
@@ -81,14 +63,12 @@
         "name": "giles",
         "username": "giles"
       },
-      "id": "c8a3f58fc7a7fa40f9191bf04b4cf5bfb6af6531",
-      "message": "Merge pull request '....' (#12) from develop/somemoretodo into main\n\nReviewed-on: https://sigyl.com/git/actions/batch-example/pulls/12\n",
-      "modified": [
-        ".github/workflows/develop-pr-closed.yml"
-      ],
+      "id": "c66f20d3c0f95a1e4124d03b15708a6ff77750a4",
+      "message": "Merge pull request '.....' (#13) from develop/somemoretodo into main\n\nReviewed-on: https://sigyl.com/git/actions/batch-example/pulls/13\n",
+      "modified": [],
       "removed": [],
-      "timestamp": "2023-10-26T19:49:30Z",
-      "url": "https://sigyl.com/git/actions/batch-example/commit/c8a3f58fc7a7fa40f9191bf04b4cf5bfb6af6531",
+      "timestamp": "2023-10-26T19:55:44Z",
+      "url": "https://sigyl.com/git/actions/batch-example/commit/c66f20d3c0f95a1e4124d03b15708a6ff77750a4",
       "verification": null
     },
     "pusher": {
@@ -193,11 +173,11 @@
       "private": false,
       "release_counter": 0,
       "repo_transfer": null,
-      "size": 239,
+      "size": 243,
       "ssh_url": "git@sigyl.com:actions/batch-example.git",
       "stars_count": 0,
       "template": false,
-      "updated_at": "2023-10-26T19:49:24Z",
+      "updated_at": "2023-10-26T19:55:24Z",
       "url": "https://sigyl.com/git/api/v1/repos/actions/batch-example",
       "watchers_count": 1,
       "website": ""
@@ -229,12 +209,12 @@
   },
   "event_path": "/var/run/act/workflow/event.json",
   "workflow": "build-develop-branch",
-  "run_id": "1966",
-  "run_number": "182",
+  "run_id": "1970",
+  "run_number": "186",
   "actor": "giles",
   "repository": "actions/batch-example",
   "event_name": "push",
-  "sha": "c8a3f58fc7a7fa40f9191bf04b4cf5bfb6af6531",
+  "sha": "c66f20d3c0f95a1e4124d03b15708a6ff77750a4",
   "ref": "refs/heads/main",
   "ref_name": "main",
   "ref_type": "branch",
