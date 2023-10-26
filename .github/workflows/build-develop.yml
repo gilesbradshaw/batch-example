@@ -23,6 +23,7 @@ jobs:
       - uses: ./.github/actions/branch-name
         id: develop-branch
         with:
+          name: ${{ github.ref_name }}
           replace: build
           with: develop 
       - uses: https://sigyl.com:3001/actions/batch2yaml@master
