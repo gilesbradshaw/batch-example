@@ -1,0 +1,21 @@
+name: branch-name
+description: gets a branch name replacing prefix
+inputs:
+  replace:
+    description: 'prefix to replace'
+    required: true
+  with:
+    description: 'replace with'
+    required: true
+outputs:
+  branch:
+runs:
+  using: "composite"
+  steps:
+    - name: replace
+      run: |
+        firstString=${{ github.ref_name }}
+        secondString=${{ inputs.with }}
+        toreplace=${{ inputs.replace }}
+        echo "branch=${firstString/${toreplace}\//"$secondString"\/}" >> $GITHUB_OUTPUT
+        cat $GITHUB_OUTPUT

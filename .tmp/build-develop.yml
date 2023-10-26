@@ -1,0 +1,88 @@
+name: convert-to-yml
+run-name: ${{ github.actor }} is learning GitHub Actions
+on:
+  push:
+    branches:
+      - 'build/**'
+jobs:
+  develop-branch:
+    runs-on: ubuntu-latest
+    steps:
+      # https://github.com/RouxAntoine/checkout/tree/v3.5.4 
+      - uses: http://sigyl.com:3000/actions/checkout@v3.5.4
+        with:
+          token: ${{ secrets.BOT_TOKEN }}
+          fetch-depth: '10'
+      - uses: ./.github/actions/tea
+        with:
+          token: ${{ secrets.BOT_TOKEN }}
+      - uses: http://sigyl.com:3000/actions/setup-node@v3
+        with:
+          node-version: '20'
+      - run: git fetch
+      - env: env
+        run: printenv
+      - uses: http://sigyl.com:3000/actions/batch2yaml@master
+        with:
+          action: yml
+          path: '.'
+      - name: get development branch name
+        run: |
+          firstString=${{ github.ref_name }}
+          secondString="develop"
+          echo ::set-env name=DEVELOPMENT_BRANCH::${firstString/build\//"$secondString"\/}
+      - name: config
+        run: |
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.event.pusher.email }}"
+      - name: commit
+        run: |
+          git add -A
+          git commit -a -m "${{ github.ref_name }} -> ${{ env.DEVELOPMENT_BRANCH }}"
+      - name: status
+        run: |
+          git branch -r
+          echo $(git branch -r | grep -Fx "  origin/${{ env.DEVELOPMENT_BRANCH }}" | wc -c)
+      - name: push
+        run: |
+          if [[ $(git branch -r | grep -Fx "  origin/${{ env.DEVELOPMENT_BRANCH }}" | wc -c) -eq 0 ]]; then
+            ls
+            git log -5
+            git status
+            git rebase -Xtheirs origin/main
+            ls
+            git log -4
+            git status
+            echo no development branch so pushing
+            git push origin HEAD:${{ env.DEVELOPMENT_BRANCH }};
+            ../tea login add -n=this --url=${{ github.server_url}} -t=${{ secrets.BOT_TOKEN }};
+            if [[ $(../tea pr ls -f=base,head -o=csv | grep grep "\"main\",\"${{ env.DEVELOPMENT_BRANCH }}\"" | head -c1 | wc -c) -eq 0 ]]; then
+              ../tea pr c --base=main --head=${{ env.DEVELOPMENT_BRANCH }} --description="
+            development pull request 
+            this PR is instigated by and will been built on [${{ github.ref_name }}](${{ github.serverUrl }}/${{ github.repository }}/src/branch/${{ env.BUILD_BRANCH }})
+              " -t="WIP: ${{ github.event.head_commit.message }}"
+            fi
+            echo 'pushed new branch and created pr';
+          else
+            if [[ $(git diff origin/${{ env.DEVELOPMENT_BRANCH }} | wc -c) -ne 0 ]]; then
+              #git rebase -Xtheirs origin/${{ env.DEVELOPMENT_BRANCH }}
+              git clone ${{ github.serverUrl }}/${{ github.repository }} ../cloned
+              git -C ../cloned fetch origin #--depth=1
+              git -C ../cloned checkout $DEVELOPMENT_BRANCH || git -C ../cloned checkout -b $DEVELOPMENT_BRANCH
+              mv ../cloned/.git ..
+              rm -rf ../cloned
+              cp -r . ../cloned
+              rm -rf ../cloned/.git
+              mv ../.git ../cloned
+              mv .git/config ../cloned/.git
+              rm -r ./*
+              rm -r .git
+              mv ../cloned/* .
+              mv ../cloned/.git .
+              git add -A
+              git commit -a -m "${{ github.ref_name }} -> ${{ env.DEVELOPMENT_BRANCH }}"
+              git push origin HEAD:${{ env.DEVELOPMENT_BRANCH }};
+            else
+              echo 'no changes so no push'
+            fi;
+          fi

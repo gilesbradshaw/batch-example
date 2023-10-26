@@ -1,0 +1,6 @@
+# action.yml
+name: 'another'
+runs:
+  using: 'docker'
+  image: 'Dockerfile.try'
+ 

@@ -1,0 +1,32 @@
+name: convert-to-xml
+run-name: ${{ github.actor }} is learning GitHub Actions
+on:
+  push:
+    tags:        
+      - '*'
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: http://sigyl.com:3000/actions/checkout@v3.5.4
+        with:
+          token: ${{ secrets.BOT_TOKEN }}
+          fetch-depth: '10'
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+      - uses: http://sigyl.com:3000/actions/batch2yaml@master
+        with:
+          action: xml
+          path: '.'
+      - name: GIT commit and push all changed files
+        env: 
+          CI_COMMIT_MESSAGE: approved yml conveted to xml.
+          CI_COMMIT_AUTHOR: Continuous Integration
+        run: |
+          echo ${{ github.ref_name }}
+          git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
+          git config --global user.email "username@users.noreply.github.com"
+          git add -A
+          git commit -a -m "${{ github.ref_name }} -> refs/heads/deployed/${{ github.ref_name }} "
+          git push -f origin HEAD:refs/heads/deployed/${{ github.ref_name }}

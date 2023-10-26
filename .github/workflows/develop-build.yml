@@ -1,0 +1,42 @@
+name: build-develop-branch
+run-name: ${{ github.actor }} is learning GitHub Actions
+on:
+  push:
+    branches:
+      - 'develop/**'
+jobs:
+  build-branch:
+    runs-on: ubuntu-latest
+    steps:
+      # https://github.com/RouxAntoine/checkout/tree/v3.5.4
+      - uses: RouxAntoine/checkout@v3.5.4
+        with:
+          token: ${{ secrets.BOT_TOKEN }}
+          fetch-depth: '1'
+      - uses: ./.github/actions/git-prep
+      - uses: ./.github/actions/branch-name
+        id: build-branch
+        with:
+          replace: develop
+          with: build
+      - uses: ./.github/actions/tea
+        with:
+          token: ${{ secrets.BOT_TOKEN }}
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+      - uses: https://sigyl.com:3001/actions/batch2yaml@master
+        with:
+          action: xml
+          path: '.'
+      - uses: ./.github/actions/i-have-changes
+        id: has-changes
+      - name: commit if changed
+        if: ${{ steps.has-changes.outputs.changes }} == "true"
+        run: |
+          git add -A
+          git commit -a -m "${{ github.ref_name }} -> ${{ steps.build-branch.outputs.branch }} "
+      - uses: ./.github/actions/weird-rebase
+        with:
+          branch: ${{ steps.build-branch.outputs.branch }}
+      
