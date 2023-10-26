@@ -23,6 +23,7 @@ jobs:
       - uses: RouxAntoine/checkout@v3.5.4
         with:
           token: ${{ secrets.BOT_TOKEN }}
+      - run: git fetch --depth=1
       - name: delete develop branch
         id: delete_develop_branch
         run: git push origin --delete ${{ github.head_ref }}
