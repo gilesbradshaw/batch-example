@@ -7,13 +7,11 @@ on:
 
 jobs:
   debug:
-    # if: ${{ ! startsWith(github.head_ref, 'develop/') }}
     runs-on: ubuntu-latest
     steps:
       - run: echo "${{ toJSON(github) }}"
   delete-develop:
     if: github.event.pull_request.merged == true
-    # if: ${{ ! startsWith(github.head_ref, 'develop/') }}
     runs-on: ubuntu-latest
     steps:
       - run: echo ${{ github.head_ref }}
