@@ -10,7 +10,7 @@ jobs:
     # if: ${{ ! startsWith(github.head_ref, 'develop/') }}
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ toJSON(github.event)  }}
+      - run: echo "${{ toJSON(github) }}"
   delete-develop:
     if: github.event.pull_request.merged == true
     # if: ${{ ! startsWith(github.head_ref, 'develop/') }}
