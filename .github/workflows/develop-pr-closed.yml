@@ -33,10 +33,11 @@ jobs:
           repo-token: ${{ secrets.BOT_TOKEN }}
           outcome: ${{ steps.delete_develop_branch.outcome }}
           test-id: Error code ${{ matrix.code }}
-      - name: get build branch name
-        run: |
-          firstString=${{ github.head_ref }}
-          secondString="build"
-          echo ::set-env name=BUILD_BRANCH::${firstString/develop\//"$secondString"\/}s      
+      - uses: ./.github/actions/branch-name
+        id: build-branch
+        with:
+          name: ${{ github.head_ref}}
+          replace: develop
+          with: build
       - name: delete build branch
-        run: git push origin --delete ${{ env.BUILD_BRANCH }}
+        run: git push origin --delete ${{ steps.build-branch.outputs.branch }}
