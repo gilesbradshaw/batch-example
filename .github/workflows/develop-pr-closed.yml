@@ -44,6 +44,9 @@ jobs:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
+      - uses: http://sigyl.com:3000/actions/checkout@v3.5.4
+        with:
+          token: ${{ secrets.BOT_TOKEN }}
       - uses: ./.github/actions/tea
         with:
           token: ${{ secrets.BOT_TOKEN }}
