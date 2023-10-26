@@ -1,0 +1,1094 @@
+- AreaModel:
+  - attributes:
+      xmlns: urn:Rockwell/AreaModel
+      xmlns:xsi: http://www.w3.org/2001/XMLSchema-instance
+      xsi:schemaLocation: urn:Rockwell/AreaModel C:\PROGRA~2\ROCKWE~1\Batch\Schemas\AreaModel.xsd
+      SchemaVersion: '71'
+  - Version: '1.00'
+  - Area:
+    - UniqueName: AREA1444
+  - EnumerationSet:
+    - UniqueName: YES_NO
+    - Type: '1'
+    - Member:
+      - Name: YES
+      - Ordinal: '19'
+    - Member:
+      - Name: NO
+      - Ordinal: '0'
+  - EnumerationSet:
+    - UniqueName: PHASE_FAILURES
+    - Type: '0'
+  - EnumerationSet:
+    - UniqueName: $TIMER_TYPE
+    - Type: '13'
+    - Member:
+      - Name: COUNT_DOWN
+      - Ordinal: '0'
+    - Member:
+      - Name: COUNT_UP
+      - Ordinal: '1'
+  - EnumerationSet:
+    - UniqueName: $HOLD_BEHAVIOR
+    - Type: '1'
+    - Member:
+      - Name: RETENTIVE
+      - Ordinal: '1'
+    - Member:
+      - Name: RESET
+      - Ordinal: '2'
+    - Member:
+      - Name: CONTINUE
+      - Ordinal: '0'
+  - EnumerationSet:
+    - UniqueName: REPORTING_CONTEXTS
+    - Type: '1'
+    - Member:
+      - Name: 'NULL'
+      - Ordinal: '0'
+  - Server:
+    - Name: STATIC
+  - Server:
+    - Name: InstructionBasedServer
+    - DSDFFileName: InstructionBasedServer.dsdf
+    - Protocol: OPC
+    - DefaultAccessPath: INSTRUCTIONS
+    - ReadAccessPath: INSTRUCTIONS
+    - ReadItemName: WATCHDOG
+    - WriteAccessPath: INSTRUCTIONS
+    - WriteItemName: WATCHDOGW
+    - OnControlScanRate: '1000'
+    - OffControlScanRate: '60000'
+    - LocalServer: '1'
+    - RemoteServerLocation: null
+    - WatchdogProtocol: '1'
+  - CommandVerificationPolicies:
+    - AbortCmd:
+      - SignatureTemplateName: null
+    - AckCmd:
+      - SignatureTemplateName: null
+    - AutoCmd:
+      - SignatureTemplateName: null
+    - BindCmd:
+      - SignatureTemplateName: null
+    - BindAckCmd:
+      - SignatureTemplateName: null
+    - ClearFailCmd:
+      - SignatureTemplateName: null
+    - CommentCmd:
+      - SignatureTemplateName: null
+    - DisconnectCmd:
+      - SignatureTemplateName: null
+    - HoldCmd:
+      - SignatureTemplateName: null
+    - ManualCmd:
+      - SignatureTemplateName: null
+    - ParamChangeCmd:
+      - SignatureTemplateName: null
+    - PauseCmd:
+      - SignatureTemplateName: null
+    - RemoveCmd:
+      - SignatureTemplateName: null
+    - ReactivateStepCmd:
+      - SignatureTemplateName: null
+    - ResetCmd:
+      - SignatureTemplateName: null
+    - RestartCmd:
+      - SignatureTemplateName: null
+    - ResumeCmd:
+      - SignatureTemplateName: null
+    - SemiAutoCmd:
+      - SignatureTemplateName: null
+    - SetLabelsCmd:
+      - SignatureTemplateName: null
+    - SetLotsCmd:
+      - SignatureTemplateName: null
+    - StartCmd:
+      - SignatureTemplateName: null
+    - StepCmd:
+      - SignatureTemplateName: null
+    - StopCmd:
+      - SignatureTemplateName: null
+    - TimerCompleteCmd:
+      - SignatureTemplateName: null
+    - TimerResetCmd:
+      - SignatureTemplateName: null
+    - ForceTransitionCmd:
+      - SignatureTemplateName: null
+    - OverrideCmd:
+      - SignatureTemplateName: null
+    - OverrideClearCmd:
+      - SignatureTemplateName: null
+  - RecipeApprovalsProcess:
+    - RecipeApprovalStep:
+      - Name: Begin Approvals
+      - Id: '-1'
+      - StepOrder: '1'
+      - Required: 1q
+      - ApproveSignatureTemplateName: null
+      - RevertSignatureTemplateName: null
+      - Description: Used to formally begin the approval process.
+    - RecipeApprovalStep:
+      - Name: Confirm Author
+      - Id: '-2'
+      - StepOrder: '2'
+      - Required: '0'
+      - ApproveSignatureTemplateName: null
+      - RevertSignatureTemplateName: null
+      - Description: Confirmation by the author of the recipe tgabghatcdcscsvdsvdsvsxsxsdit is readyvfvf for h v vredcdview.s...gfhhh....
+    - RecipeApprovalStep:
+      - Name: Reviqedcdw Recipe
+      - Id: '-3'
+      - StepOrder: '3'
+      - Required: '0'
+      - ApproveSignatureTemplateName: null
+      - RevertSignatureTemplateName: null
+      - Description: Confirmation that the recipe has been reviewed by the signer(s)
+    - RecipeApprovalStep:
+      - Name: Approve Recipe
+      - Id: '-4'
+      - StepOrder: '4'
+      - Required: '0'
+      - ApproveSignatureTemplateName: null
+      - RevertSignatureTemplateName: null
+      - Description: Confirmation that the recipe has been approved by the signer(s)
+    - RecipeApprovalStep:
+      - Name: Release Recipe as Step
+      - Id: '-5'
+      - StepOrder: '2'
+      - Required: '1'
+      - ApproveSignatureTemplateName: null
+      - RevertSignatureTemplateName: null
+      - Description: Confirmation that this step can be available for use by others.
+    - RecipeApprovalStep:
+      - Name: Release Recipe to Production
+      - Id: '-6'
+      - StepOrder: '2'
+      - Required: '1'
+      - ApproveSignatureTemplateName: null
+      - RevertSignatureTemplateName: null
+      - Description: Confirmation that this recipe can be available to put on the batch list.
+  - ExpeditedApprovalsProcess:
+    - RecipeApprovalStep:
+      - Name: Release Recipe as Step
+      - Id: '-7'
+      - StepOrder: '1'
+      - Required: '1'
+      - ApproveSignatureTemplateName: null
+      - RevertSignatureTemplateName: null
+      - Description: Confirmation that this step can be available for use by others.
+    - RecipeApprovalStep:
+      - Name: Release Recipe to Production
+      - Id: '-8'
+      - StepOrder: '1'
+      - Required: '1'
+      - ApproveSignatureTemplateName: null
+      - RevertSignatureTemplateName: null
+      - Description: Confirmation that this recipe can be available to put on the batch list.
+  - RecipeApprovalProcessConfigured: '0'
+  - EnableRecipeVersioning: '0'
+  - SecurityAuthorityIdentifier: NOT_AVAILABLE
+  - TagClass:
+    - UniqueName: PARMTR01
+    - Type: Real
+    - Description: null
+    - EngineeringUnits: null
+    - GlobalAttribute: 'false'
+  - TagClass:
+    - UniqueName: PARMTR02
+    - Type: Real
+    - Description: null
+    - EngineeringUnits: null
+    - GlobalAttribute: 'false'
+  - TagClass:
+    - UniqueName: PARMTR03
+    - Type: Real
+    - Description: null
+    - EngineeringUnits: null
+    - GlobalAttribute: 'false'
+  - TagClass:
+    - UniqueName: REPORT01
+    - Type: Real
+    - Description: null
+    - EngineeringUnits: null
+    - GlobalAttribute: 'false'
+  - TagClass:
+    - UniqueName: REPORT02
+    - Type: Real
+    - Description: null
+    - EngineeringUnits: null
+    - GlobalAttribute: 'false'
+  - TagClass:
+    - UniqueName: REQUST01
+    - Type: Real
+    - Description: null
+    - EngineeringUnits: null
+    - GlobalAttribute: 'false'
+  - TagClass:
+    - UniqueName: REQUST02
+    - Type: Real
+    - Description: null
+    - EngineeringUnits: null
+    - GlobalAttribute: 'false'
+  - ProcessCellClass:
+    - UniqueName: PCELL_CLS1
+    - IconFilename: CFactory1.BMP
+  - UnitClass:
+    - UniqueName: UNIT_CLS1
+    - IconFilename: UAGImixer.BMP
+  - RecipePhase:
+    - UniqueName: $TIMER_DN_SECOND
+    - IconFilename: Pstopwatch.bmp
+    - SystemCreated: 'true'
+    - Type: Standard
+    - DefaultControllerProgramName: null
+    - NumberOfParameterTags: '3'
+    - NumberOfReportTags: '2'
+    - NumberOfRequestTags: '0'
+    - NumberOfMessagePartners: '0'
+    - ParameterTagLockEnabled: 'true'
+    - RecipeParameter:
+      - Name: $TIMER_TYPE
+      - ID: '1'
+      - Type: Enumeration
+      - Scale: 'false'
+      - DownloadFlags: '65535'
+      - Contexts: null
+      - EnumerationDefault: COUNT_DOWN
+      - EnumerationSetName: $TIMER_TYPE
+    - RecipeParameter:
+      - Name: $HOLD_BEHAVIOR
+      - ID: '2'
+      - Type: Enumeration
+      - Scale: 'false'
+      - DownloadFlags: '65535'
+      - Contexts: null
+      - EnumerationDefault: CONTINUE
+      - EnumerationSetName: $HOLD_BEHAVIOR
+    - RecipeParameter:
+      - Name: $SETPOINT
+      - ID: '3'
+      - Type: Real
+      - Scale: 'false'
+      - DownloadFlags: '65535'
+      - Contexts: null
+      - RealDefault: '300'
+      - RealMin: '10'
+      - RealMax: '4147200'
+      - EngineeringUnits: SECONDS
+      - ParameterLimit:
+        - VerificationMethod: No_Limits
+        - LimitScale: 'false'
+        - NormalAction: None
+        - NormalSignatureTemplate: null
+        - HighLowAction: SignatureTemplate
+        - HighLowSignatureTemplate: null
+        - HighValue: null
+        - LowValue: null
+        - HighHighLowLowAction: SignatureTemplate
+        - HighHighLowLowSignatureTemplate: null
+        - HighHighValue: null
+        - LowLowValue: null
+        - HighHighHighLowLowLowAction: SignatureTemplate
+        - HighHighHighLowLowLowSignatureTemplate: null
+        - HighHighHighValue: null
+        - LowLowLowValue: null
+    - ReportParameter:
+      - Name: $ELAPSED_TIME
+      - ID: '1'
+      - Type: Real
+      - Accumulate: '0'
+      - ERPAlias: null
+      - UploadFlags: '65535'
+      - Contexts: null
+      - EngineeringUnits: SECONDS
+      - ReportLimit:
+        - VerificationMethod: No_Limits
+        - LimitScale: 'false'
+        - NormalAction: None
+        - NormalSignatureTemplate: null
+        - HighLowAction: SignatureTemplate
+        - HighLowSignatureTemplate: null
+        - HighValue: null
+        - LowValue: null
+        - HighHighLowLowAction: SignatureTemplate
+        - HighHighLowLowSignatureTemplate: null
+        - HighHighValue: null
+        - LowLowValue: null
+        - HighHighHighLowLowLowAction: SignatureTemplate
+        - HighHighHighLowLowLowSignatureTemplate: null
+        - HighHighHighValue: null
+        - LowLowLowValue: null
+        - VerificationLimitCalculation: Absolute
+        - TargetParameter: null
+    - ReportParameter:
+      - Name: $REMAINING_TIME
+      - ID: '2'
+      - Type: Real
+      - Accumulate: '0'
+      - ERPAlias: null
+      - UploadFlags: '65535'
+      - Contexts: null
+      - EngineeringUnits: SECONDS
+      - ReportLimit:
+        - VerificationMethod: No_Limits
+        - LimitScale: 'false'
+        - NormalAction: None
+        - NormalSignatureTemplate: null
+        - HighLowAction: SignatureTemplate
+        - HighLowSignatureTemplate: null
+        - HighValue: null
+        - LowValue: null
+        - HighHighLowLowAction: SignatureTemplate
+        - HighHighLowLowSignatureTemplate: null
+        - HighHighValue: null
+        - LowLowValue: null
+        - HighHighHighLowLowLowAction: SignatureTemplate
+        - HighHighHighLowLowLowSignatureTemplate: null
+        - HighHighHighValue: null
+        - LowLowLowValue: null
+        - VerificationLimitCalculation: Absolute
+        - TargetParameter: null
+  - RecipePhase:
+    - UniqueName: $TIMER_DN_MINUTE
+    - IconFilename: Pstopwatch.bmp
+    - SystemCreated: 'true'
+    - Type: Standard
+    - DefaultControllerProgramName: null
+    - NumberOfParameterTags: '3'
+    - NumberOfReportTags: '2'
+    - NumberOfRequestTags: '0'
+    - NumberOfMessagePartners: '0'
+    - ParameterTagLockEnabled: 'true'
+    - RecipeParameter:
+      - Name: $TIMER_TYPE
+      - ID: '1'
+      - Type: Enumeration
+      - Scale: 'false'
+      - DownloadFlags: '65535'
+      - Contexts: null
+      - EnumerationDefault: COUNT_DOWN
+      - EnumerationSetName: $TIMER_TYPE
+    - RecipeParameter:
+      - Name: $HOLD_BEHAVIOR
+      - ID: '2'
+      - Type: Enumeration
+      - Scale: 'false'
+      - DownloadFlags: '65535'
+      - Contexts: null
+      - EnumerationDefault: CONTINUE
+      - EnumerationSetName: $HOLD_BEHAVIOR
+    - RecipeParameter:
+      - Name: $SETPOINT
+      - ID: '3'
+      - Type: Real
+      - Scale: 'false'
+      - DownloadFlags: '65535'
+      - Contexts: null
+      - RealDefault: '20'
+      - RealMin: '0.17'
+      - RealMax: '69120'
+      - EngineeringUnits: MINUTES
+      - ParameterLimit:
+        - VerificationMethod: No_Limits
+        - LimitScale: 'false'
+        - NormalAction: None
+        - NormalSignatureTemplate: null
+        - HighLowAction: SignatureTemplate
+        - HighLowSignatureTemplate: null
+        - HighValue: null
+        - LowValue: null
+        - HighHighLowLowAction: SignatureTemplate
+        - HighHighLowLowSignatureTemplate: null
+        - HighHighValue: null
+        - LowLowValue: null
+        - HighHighHighLowLowLowAction: SignatureTemplate
+        - HighHighHighLowLowLowSignatureTemplate: null
+        - HighHighHighValue: null
+        - LowLowLowValue: null
+    - ReportParameter:
+      - Name: $ELAPSED_TIME
+      - ID: '1'
+      - Type: Real
+      - Accumulate: '0'
+      - ERPAlias: null
+      - UploadFlags: '65535'
+      - Contexts: null
+      - EngineeringUnits: MINUTES
+      - ReportLimit:
+        - VerificationMethod: No_Limits
+        - LimitScale: 'false'
+        - NormalAction: None
+        - NormalSignatureTemplate: null
+        - HighLowAction: SignatureTemplate
+        - HighLowSignatureTemplate: null
+        - HighValue: null
+        - LowValue: null
+        - HighHighLowLowAction: SignatureTemplate
+        - HighHighLowLowSignatureTemplate: null
+        - HighHighValue: null
+        - LowLowValue: null
+        - HighHighHighLowLowLowAction: SignatureTemplate
+        - HighHighHighLowLowLowSignatureTemplate: null
+        - HighHighHighValue: null
+        - LowLowLowValue: null
+        - VerificationLimitCalculation: Absolute
+        - TargetParameter: null
+    - ReportParameter:
+      - Name: $REMAINING_TIME
+      - ID: '2'
+      - Type: Real
+      - Accumulate: '0'
+      - ERPAlias: null
+      - UploadFlags: '65535'
+      - Contexts: null
+      - EngineeringUnits: MINUTES
+      - ReportLimit:
+        - VerificationMethod: No_Limits
+        - LimitScale: 'false'
+        - NormalAction: None
+        - NormalSignatureTemplate: null
+        - HighLowAction: SignatureTemplate
+        - HighLowSignatureTemplate: null
+        - HighValue: null
+        - LowValue: null
+        - HighHighLowLowAction: SignatureTemplate
+        - HighHighLowLowSignatureTemplate: null
+        - HighHighValue: null
+        - LowLowValue: null
+        - HighHighHighLowLowLowAction: SignatureTemplate
+        - HighHighHighLowLowLowSignatureTemplate: null
+        - HighHighHighValue: null
+        - LowLowLowValue: null
+        - VerificationLimitCalculation: Absolute
+        - TargetParameter: null
+  - RecipePhase:
+    - UniqueName: $TIMER_DN_HOUR
+    - IconFilename: Pstopwatch.bmp
+    - SystemCreated: 'true'
+    - Type: Standard
+    - DefaultControllerProgramName: null
+    - NumberOfParameterTags: '3'
+    - NumberOfReportTags: '2'
+    - NumberOfRequestTags: '0'
+    - NumberOfMessagePartners: '0'
+    - ParameterTagLockEnabled: 'true'
+    - RecipeParameter:
+      - Name: $TIMER_TYPE
+      - ID: '1'
+      - Type: Enumeration
+      - Scale: 'false'
+      - DownloadFlags: '65535'
+      - Contexts: null
+      - EnumerationDefault: COUNT_DOWN
+      - EnumerationSetName: $TIMER_TYPE
+    - RecipeParameter:
+      - Name: $HOLD_BEHAVIOR
+      - ID: '2'
+      - Type: Enumeration
+      - Scale: 'false'
+      - DownloadFlags: '65535'
+      - Contexts: null
+      - EnumerationDefault: CONTINUE
+      - EnumerationSetName: $HOLD_BEHAVIOR
+    - RecipeParameter:
+      - Name: $SETPOINT
+      - ID: '3'
+      - Type: Real
+      - Scale: 'false'
+      - DownloadFlags: '65535'
+      - Contexts: null
+      - RealDefault: '5'
+      - RealMin: '0.003'
+      - RealMax: '1152'
+      - EngineeringUnits: HOURS
+      - ParameterLimit:
+        - VerificationMethod: No_Limits
+        - LimitScale: 'false'
+        - NormalAction: None
+        - NormalSignatureTemplate: null
+        - HighLowAction: SignatureTemplate
+        - HighLowSignatureTemplate: null
+        - HighValue: null
+        - LowValue: null
+        - HighHighLowLowAction: SignatureTemplate
+        - HighHighLowLowSignatureTemplate: null
+        - HighHighValue: null
+        - LowLowValue: null
+        - HighHighHighLowLowLowAction: SignatureTemplate
+        - HighHighHighLowLowLowSignatureTemplate: null
+        - HighHighHighValue: null
+        - LowLowLowValue: null
+    - ReportParameter:
+      - Name: $ELAPSED_TIME
+      - ID: '1'
+      - Type: Real
+      - Accumulate: '0'
+      - ERPAlias: null
+      - UploadFlags: '65535'
+      - Contexts: null
+      - EngineeringUnits: HOURS
+      - ReportLimit:
+        - VerificationMethod: No_Limits
+        - LimitScale: 'false'
+        - NormalAction: None
+        - NormalSignatureTemplate: null
+        - HighLowAction: SignatureTemplate
+        - HighLowSignatureTemplate: null
+        - HighValue: null
+        - LowValue: null
+        - HighHighLowLowAction: SignatureTemplate
+        - HighHighLowLowSignatureTemplate: null
+        - HighHighValue: null
+        - LowLowValue: null
+        - HighHighHighLowLowLowAction: SignatureTemplate
+        - HighHighHighLowLowLowSignatureTemplate: null
+        - HighHighHighValue: null
+        - LowLowLowValue: null
+        - VerificationLimitCalculation: Absolute
+        - TargetParameter: null
+    - ReportParameter:
+      - Name: $REMAINING_TIME
+      - ID: '2'
+      - Type: Real
+      - Accumulate: '0'
+      - ERPAlias: null
+      - UploadFlags: '65535'
+      - Contexts: null
+      - EngineeringUnits: HOURS
+      - ReportLimit:
+        - VerificationMethod: No_Limits
+        - LimitScale: 'false'
+        - NormalAction: None
+        - NormalSignatureTemplate: null
+        - HighLowAction: SignatureTemplate
+        - HighLowSignatureTemplate: null
+        - HighValue: null
+        - LowValue: null
+        - HighHighLowLowAction: SignatureTemplate
+        - HighHighLowLowSignatureTemplate: null
+        - HighHighValue: null
+        - LowLowValue: null
+        - HighHighHighLowLowLowAction: SignatureTemplate
+        - HighHighHighLowLowLowSignatureTemplate: null
+        - HighHighHighValue: null
+        - LowLowLowValue: null
+        - VerificationLimitCalculation: Absolute
+        - TargetParameter: null
+  - RecipePhase:
+    - UniqueName: $TIMER_DN_DAY
+    - IconFilename: Pstopwatch.bmp
+    - SystemCreated: 'true'
+    - Type: Standard
+    - DefaultControllerProgramName: null
+    - NumberOfParameterTags: '3'
+    - NumberOfReportTags: '2'
+    - NumberOfRequestTags: '0'
+    - NumberOfMessagePartners: '0'
+    - ParameterTagLockEnabled: 'true'
+    - RecipeParameter:
+      - Name: $TIMER_TYPE
+      - ID: '1'
+      - Type: Enumeration
+      - Scale: 'false'
+      - DownloadFlags: '65535'
+      - Contexts: null
+      - EnumerationDefault: COUNT_DOWN
+      - EnumerationSetName: $TIMER_TYPE
+    - RecipeParameter:
+      - Name: $HOLD_BEHAVIOR
+      - ID: '2'
+      - Type: Enumeration
+      - Scale: 'false'
+      - DownloadFlags: '65535'
+      - Contexts: null
+      - EnumerationDefault: CONTINUE
+      - EnumerationSetName: $HOLD_BEHAVIOR
+    - RecipeParameter:
+      - Name: $SETPOINT
+      - ID: '3'
+      - Type: Real
+      - Scale: 'false'
+      - DownloadFlags: '65535'
+      - Contexts: null
+      - RealDefault: '5'
+      - RealMin: '0'
+      - RealMax: '48'
+      - EngineeringUnits: DAYS
+      - ParameterLimit:
+        - VerificationMethod: No_Limits
+        - LimitScale: 'false'
+        - NormalAction: None
+        - NormalSignatureTemplate: null
+        - HighLowAction: SignatureTemplate
+        - HighLowSignatureTemplate: null
+        - HighValue: null
+        - LowValue: null
+        - HighHighLowLowAction: SignatureTemplate
+        - HighHighLowLowSignatureTemplate: null
+        - HighHighValue: null
+        - LowLowValue: null
+        - HighHighHighLowLowLowAction: SignatureTemplate
+        - HighHighHighLowLowLowSignatureTemplate: null
+        - HighHighHighValue: null
+        - LowLowLowValue: null
+    - ReportParameter:
+      - Name: $ELAPSED_TIME
+      - ID: '1'
+      - Type: Real
+      - Accumulate: '0'
+      - ERPAlias: null
+      - UploadFlags: '65535'
+      - Contexts: null
+      - EngineeringUnits: DAYS
+      - ReportLimit:
+        - VerificationMethod: No_Limits
+        - LimitScale: 'false'
+        - NormalAction: None
+        - NormalSignatureTemplate: null
+        - HighLowAction: SignatureTemplate
+        - HighLowSignatureTemplate: null
+        - HighValue: null
+        - LowValue: null
+        - HighHighLowLowAction: SignatureTemplate
+        - HighHighLowLowSignatureTemplate: null
+        - HighHighValue: null
+        - LowLowValue: null
+        - HighHighHighLowLowLowAction: SignatureTemplate
+        - HighHighHighLowLowLowSignatureTemplate: null
+        - HighHighHighValue: null
+        - LowLowLowValue: null
+        - VerificationLimitCalculation: Absolute
+        - TargetParameter: null
+    - ReportParameter:
+      - Name: $REMAINING_TIME
+      - ID: '2'
+      - Type: Real
+      - Accumulate: '0'
+      - ERPAlias: null
+      - UploadFlags: '65535'
+      - Contexts: null
+      - EngineeringUnits: DAYS
+      - ReportLimit:
+        - VerificationMethod: No_Limits
+        - LimitScale: 'false'
+        - NormalAction: None
+        - NormalSignatureTemplate: null
+        - HighLowAction: SignatureTemplate
+        - HighLowSignatureTemplate: null
+        - HighValue: null
+        - LowValue: null
+        - HighHighLowLowAction: SignatureTemplate
+        - HighHighLowLowSignatureTemplate: null
+        - HighHighValue: null
+        - LowLowValue: null
+        - HighHighHighLowLowLowAction: SignatureTemplate
+        - HighHighHighLowLowLowSignatureTemplate: null
+        - HighHighHighValue: null
+        - LowLowLowValue: null
+        - VerificationLimitCalculation: Absolute
+        - TargetParameter: null
+  - RecipePhase:
+    - UniqueName: $TIMER_UP_SECOND
+    - IconFilename: Pstopwatch.bmp
+    - SystemCreated: 'true'
+    - Type: Standard
+    - DefaultControllerProgramName: null
+    - NumberOfParameterTags: '2'
+    - NumberOfReportTags: '1'
+    - NumberOfRequestTags: '0'
+    - NumberOfMessagePartners: '0'
+    - ParameterTagLockEnabled: 'true'
+    - RecipeParameter:
+      - Name: $TIMER_TYPE
+      - ID: '1'
+      - Type: Enumeration
+      - Scale: 'false'
+      - DownloadFlags: '65535'
+      - Contexts: null
+      - EnumerationDefault: COUNT_UP
+      - EnumerationSetName: $TIMER_TYPE
+    - RecipeParameter:
+      - Name: $HOLD_BEHAVIOR
+      - ID: '2'
+      - Type: Enumeration
+      - Scale: 'false'
+      - DownloadFlags: '65535'
+      - Contexts: null
+      - EnumerationDefault: CONTINUE
+      - EnumerationSetName: $HOLD_BEHAVIOR
+    - ReportParameter:
+      - Name: $ELAPSED_TIME
+      - ID: '1'
+      - Type: Real
+      - Accumulate: '0'
+      - ERPAlias: null
+      - UploadFlags: '65535'
+      - Contexts: null
+      - EngineeringUnits: SECONDS
+      - ReportLimit:
+        - VerificationMethod: No_Limits
+        - LimitScale: 'false'
+        - NormalAction: None
+        - NormalSignatureTemplate: null
+        - HighLowAction: SignatureTemplate
+        - HighLowSignatureTemplate: null
+        - HighValue: null
+        - LowValue: null
+        - HighHighLowLowAction: SignatureTemplate
+        - HighHighLowLowSignatureTemplate: null
+        - HighHighValue: null
+        - LowLowValue: null
+        - HighHighHighLowLowLowAction: SignatureTemplate
+        - HighHighHighLowLowLowSignatureTemplate: null
+        - HighHighHighValue: null
+        - LowLowLowValue: null
+        - VerificationLimitCalculation: Absolute
+        - TargetParameter: null
+  - RecipePhase:
+    - UniqueName: $TIMER_UP_MINUTE
+    - IconFilename: Pstopwatch.bmp
+    - SystemCreated: 'true'
+    - Type: Standard
+    - DefaultControllerProgramName: null
+    - NumberOfParameterTags: '2'
+    - NumberOfReportTags: '1'
+    - NumberOfRequestTags: '0'
+    - NumberOfMessagePartners: '0'
+    - ParameterTagLockEnabled: 'true'
+    - RecipeParameter:
+      - Name: $TIMER_TYPE
+      - ID: '1'
+      - Type: Enumeration
+      - Scale: 'false'
+      - DownloadFlags: '65535'
+      - Contexts: null
+      - EnumerationDefault: COUNT_UP
+      - EnumerationSetName: $TIMER_TYPE
+    - RecipeParameter:
+      - Name: $HOLD_BEHAVIOR
+      - ID: '2'
+      - Type: Enumeration
+      - Scale: 'false'
+      - DownloadFlags: '65535'
+      - Contexts: null
+      - EnumerationDefault: CONTINUE
+      - EnumerationSetName: $HOLD_BEHAVIOR
+    - ReportParameter:
+      - Name: $ELAPSED_TIME
+      - ID: '1'
+      - Type: Real
+      - Accumulate: '0'
+      - ERPAlias: null
+      - UploadFlags: '65535'
+      - Contexts: null
+      - EngineeringUnits: MINUTES
+      - ReportLimit:
+        - VerificationMethod: No_Limits
+        - LimitScale: 'false'
+        - NormalAction: None
+        - NormalSignatureTemplate: null
+        - HighLowAction: SignatureTemplate
+        - HighLowSignatureTemplate: null
+        - HighValue: null
+        - LowValue: null
+        - HighHighLowLowAction: SignatureTemplate
+        - HighHighLowLowSignatureTemplate: null
+        - HighHighValue: null
+        - LowLowValue: null
+        - HighHighHighLowLowLowAction: SignatureTemplate
+        - HighHighHighLowLowLowSignatureTemplate: null
+        - HighHighHighValue: null
+        - LowLowLowValue: null
+        - VerificationLimitCalculation: Absolute
+        - TargetParameter: null
+  - RecipePhase:
+    - UniqueName: $TIMER_UP_HOUR
+    - IconFilename: Pstopwatch.bmp
+    - SystemCreated: 'true'
+    - Type: Standard
+    - DefaultControllerProgramName: null
+    - NumberOfParameterTags: '2'
+    - NumberOfReportTags: '1'
+    - NumberOfRequestTags: '0'
+    - NumberOfMessagePartners: '0'
+    - ParameterTagLockEnabled: 'true'
+    - RecipeParameter:
+      - Name: $TIMER_TYPE
+      - ID: '1'
+      - Type: Enumeration
+      - Scale: 'false'
+      - DownloadFlags: '65535'
+      - Contexts: null
+      - EnumerationDefault: COUNT_UP
+      - EnumerationSetName: $TIMER_TYPE
+    - RecipeParameter:
+      - Name: $HOLD_BEHAVIOR
+      - ID: '2'
+      - Type: Enumeration
+      - Scale: 'false'
+      - DownloadFlags: '65535'
+      - Contexts: null
+      - EnumerationDefault: CONTINUE
+      - EnumerationSetName: $HOLD_BEHAVIOR
+    - ReportParameter:
+      - Name: $ELAPSED_TIME
+      - ID: '1'
+      - Type: Real
+      - Accumulate: '0'
+      - ERPAlias: null
+      - UploadFlags: '65535'
+      - Contexts: null
+      - EngineeringUnits: HOURS
+      - ReportLimit:
+        - VerificationMethod: No_Limits
+        - LimitScale: 'false'
+        - NormalAction: None
+        - NormalSignatureTemplate: null
+        - HighLowAction: SignatureTemplate
+        - HighLowSignatureTemplate: null
+        - HighValue: null
+        - LowValue: null
+        - HighHighLowLowAction: SignatureTemplate
+        - HighHighLowLowSignatureTemplate: null
+        - HighHighValue: null
+        - LowLowValue: null
+        - HighHighHighLowLowLowAction: SignatureTemplate
+        - HighHighHighLowLowLowSignatureTemplate: null
+        - HighHighHighValue: null
+        - LowLowLowValue: null
+        - VerificationLimitCalculation: Absolute
+        - TargetParameter: null
+  - RecipePhase:
+    - UniqueName: $TIMER_UP_DAY
+    - IconFilename: Pstopwatch.bmp
+    - SystemCreated: 'true'
+    - Type: Standard
+    - DefaultControllerProgramName: null
+    - NumberOfParameterTags: '2'
+    - NumberOfReportTags: '1'
+    - NumberOfRequestTags: '0'
+    - NumberOfMessagePartners: '0'
+    - ParameterTagLockEnabled: 'true'
+    - RecipeParameter:
+      - Name: $TIMER_TYPE
+      - ID: '1'
+      - Type: Enumeration
+      - Scale: 'false'
+      - DownloadFlags: '65535'
+      - Contexts: null
+      - EnumerationDefault: COUNT_UP
+      - EnumerationSetName: $TIMER_TYPE
+    - RecipeParameter:
+      - Name: $HOLD_BEHAVIOR
+      - ID: '2'
+      - Type: Enumeration
+      - Scale: 'false'
+      - DownloadFlags: '65535'
+      - Contexts: null
+      - EnumerationDefault: CONTINUE
+      - EnumerationSetName: $HOLD_BEHAVIOR
+    - ReportParameter:
+      - Name: $ELAPSED_TIME
+      - ID: '1'
+      - Type: Real
+      - Accumulate: '0'
+      - ERPAlias: null
+      - UploadFlags: '65535'
+      - Contexts: null
+      - EngineeringUnits: DAYS
+      - ReportLimit:
+        - VerificationMethod: No_Limits
+        - LimitScale: 'false'
+        - NormalAction: None
+        - NormalSignatureTemplate: null
+        - HighLowAction: SignatureTemplate
+        - HighLowSignatureTemplate: null
+        - HighValue: null
+        - LowValue: null
+        - HighHighLowLowAction: SignatureTemplate
+        - HighHighLowLowSignatureTemplate: null
+        - HighHighValue: null
+        - LowLowValue: null
+        - HighHighHighLowLowLowAction: SignatureTemplate
+        - HighHighHighLowLowLowSignatureTemplate: null
+        - HighHighHighValue: null
+        - LowLowLowValue: null
+        - VerificationLimitCalculation: Absolute
+        - TargetParameter: null
+  - RecipePhase:
+    - UniqueName: $NULL
+    - IconFilename: Pstopwatch.bmp
+    - SystemCreated: 'true'
+    - Type: Standard
+    - DefaultControllerProgramName: null
+    - NumberOfParameterTags: '0'
+    - NumberOfReportTags: '0'
+    - NumberOfRequestTags: '0'
+    - NumberOfMessagePartners: '0'
+    - ParameterTagLockEnabled: 'true'
+  - RecipePhase:
+    - UniqueName: PHASE1
+    - IconFilename: Pagitator.bmp
+    - SystemCreated: 'false'
+    - Type: Standard
+    - DefaultControllerProgramName: null
+    - NumberOfParameterTags: '0'
+    - NumberOfReportTags: '0'
+    - NumberOfRequestTags: '0'
+    - NumberOfMessagePartners: '0'
+    - ParameterTagLockEnabled: 'true'
+  - ProcessCell:
+    - attributes:
+        XPos: '160'
+        YPos: '73'
+    - UniqueName: PROCESS_CELL1
+    - Class: PCELL_CLS1
+    - UniqueID: '1'
+    - Logix5000UID: '0'
+    - MaxOwners: '1'
+    - CrossInvocationString: null
+    - CrossInvocationString: null
+    - CrossInvocationString: null
+    - CrossInvocationString: null
+    - CrossInvocationString: null
+    - HyperlinkString: null
+    - HyperlinkString: null
+    - HyperlinkString: null
+    - HyperlinkString: null
+    - HyperlinkString: null
+    - ERPAlias: null
+    - ConfiguredUnitName: UNIT1
+  - Unit:
+    - attributes:
+        XPos: '101'
+        YPos: '84'
+    - UniqueName: UNIT1
+    - Class: UNIT_CLS1
+    - UniqueID: '2'
+    - Logix5000UID: '0'
+    - Server: null
+    - MaxOwners: '1'
+    - CrossInvocationString: null
+    - CrossInvocationString: null
+    - CrossInvocationString: null
+    - CrossInvocationString: null
+    - CrossInvocationString: null
+    - HyperlinkString: null
+    - HyperlinkString: null
+    - HyperlinkString: null
+    - HyperlinkString: null
+    - HyperlinkString: null
+    - ERPAlias: null
+    - ConfiguredEquipmentModuleName: PHASE11
+  - EquipmentModule:
+    - attributes:
+        XPos: '266'
+        YPos: '225'
+    - UniqueName: PHASE11
+    - RecipePhase: PHASE1
+    - EquipmentPhaseType: TAGPHASE
+    - UniqueID: '3'
+    - MaxOwners: '1'
+    - CrossInvocationString: null
+    - CrossInvocationString: null
+    - CrossInvocationString: null
+    - CrossInvocationString: null
+    - CrossInvocationString: null
+    - HyperlinkString: null
+    - HyperlinkString: null
+    - HyperlinkString: null
+    - HyperlinkString: null
+    - HyperlinkString: null
+    - ERPAlias: null
+    - UploadDownloadFlags: '0'
+    - InstructionBasedConfiguration:
+      - InstructionFilePathname: instruction.htm
+    - CreateParameterLimitTag: 'false'
+    - CreateReportLimitTag: 'false'
+    - OnControlScanRate: '1000'
+    - OffControlScanRate: '60000'
+    - ControlTagCommand:
+      - Server: InstructionBasedServer
+      - DataType: Integer
+      - ReadAccessPath: INSTRUCTIONS
+      - ReadItemName: PHASE11.OC
+      - WriteAccessPath: INSTRUCTIONS
+      - WriteItemName: PHASE11.OCW
+    - ControlTagFailure:
+      - Server: InstructionBasedServer
+      - DataType: Integer
+      - ReadAccessPath: INSTRUCTIONS
+      - ReadItemName: PHASE11.F
+      - WriteAccessPath: INSTRUCTIONS
+      - WriteItemName: PHASE11.FW
+    - ControlTagOwner:
+      - Server: InstructionBasedServer
+      - DataType: Integer
+      - ReadAccessPath: INSTRUCTIONS
+      - ReadItemName: PHASE11.W
+      - WriteAccessPath: INSTRUCTIONS
+      - WriteItemName: PHASE11.WW
+    - ControlTagPause:
+      - Server: InstructionBasedServer
+      - DataType: Integer
+      - ReadAccessPath: INSTRUCTIONS
+      - ReadItemName: PHASE11.P
+      - WriteAccessPath: INSTRUCTIONS
+      - WriteItemName: PHASE11.PW
+    - ControlTagPaused:
+      - Server: InstructionBasedServer
+      - DataType: Integer
+      - ReadAccessPath: INSTRUCTIONS
+      - ReadItemName: PHASE11.PD
+      - WriteAccessPath: INSTRUCTIONS
+      - WriteItemName: PHASE11.PDW
+    - ControlTagRequest:
+      - Server: InstructionBasedServer
+      - DataType: Integer
+      - ReadAccessPath: INSTRUCTIONS
+      - ReadItemName: PHASE11.RQ
+      - WriteAccessPath: INSTRUCTIONS
+      - WriteItemName: PHASE11.RQW
+    - ControlTagSingleStep:
+      - Server: InstructionBasedServer
+      - DataType: Integer
+      - ReadAccessPath: INSTRUCTIONS
+      - ReadItemName: PHASE11.SS
+      - WriteAccessPath: INSTRUCTIONS
+      - WriteItemName: PHASE11.SSW
+    - ControlTagStatus:
+      - Server: InstructionBasedServer
+      - DataType: Integer
+      - ReadAccessPath: INSTRUCTIONSq
+      - ReadItemName: PHASE11.ST
+      - WriteAccessPath: INSTRUCTIONS
+      - WriteItemName: PHASE11.STW
+    - ControlTagStepIndex:
+      - Server: InstructionBasedServer
+      - DataType: Integer
+      - ReadAccessPath: INSTRUCTIONS
+      - ReadItemName: PHASE11.SI
+      - WriteAccessPath: INSTRUCTIONS
+      - WriteItemName: PHASE11.SIW
+    - ControlTagUnit:
+      - Server: InstructionBasedServer
+      - DataType: Integer
+      - ReadAccessPath: INSTRUCTIONS
+      - ReadItemName: PHASE11.UN
+      - WriteAccessPath: INSTRUCTIONS
+      - WriteItemName: PHASE11.UNW
+    - RequestTag:
+      - Server: InstructionBasedServer
+      - DataType: Integer
+      - ReadAccessPath: INSTRUCTIONS
+      - ReadItemName: PHASE11.Q01
+      - WriteAccessPath: INSTRUCTIONS
+      - WriteItemName: PHASE11.Q01W
+    - RequestTag:
+      - Server: InstructionBasedServer
+      - DataType: Integer
+      - ReadAccessPath: INSTRUCTIONS
+      - ReadItemName: PHASE11.Q02
+      - WriteAccessPath: INSTRUCTIONS
+      - WriteItemName: PHASE11.Q02W
