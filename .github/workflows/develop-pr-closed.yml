@@ -40,3 +40,19 @@ jobs:
           with: build
       - name: delete build branch
         run: git push origin --delete ${{ steps.build-branch.outputs.branch }}
+  release:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ./.github/actions/tea
+        with:
+          token: ${{ secrets.BOT_TOKEN }}
+      - name: bump release
+        run: |
+          ../tea r ls -o=simple
+          export version="$(../tea r ls -o=simple | head -n 1 | tr " " "\n" | head -n 1 | awk -F. '{$NF = $NF + 1;} 1' | sed 's/ /./g')"
+          if [[ $version -eq "" ]]; then
+            export version=v0.0.1;
+          fi
+          ../tea r c --note="this isrelease ${version}" --tag=${version} --title=${version}  --target=${{ github.sha }};
+          echo ::set-env name=VERSION::$version;
