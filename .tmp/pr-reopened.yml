@@ -35,7 +35,7 @@ jobs:
           echo ::set-env name=BUILD_BRANCH::${firstString/develop\//"$secondString"\/}
       - name: GIT commit and push all changed files
         env: 
-          CI_COMMIT_MESSAGE: Reopened PR copnverted to xml.
+          CI_COMMIT_MESSAGE: Reopened PR converted to xml.
           CI_COMMIT_AUTHOR: Continuous Integration
         run: |
           git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"

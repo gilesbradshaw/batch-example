@@ -1,18 +1,16 @@
 name: build-develop-branch
 run-name: ${{ github.actor }} is learning GitHub Actions
 on:
-  pull_request:
-    types:
-      - closed
-      - deleted
+  push:
     branches:
       - main
 
 jobs:
   delete-develop:
-    if: ${{ ! startsWith(github.head_ref, 'develop/') }}
+    # if: ${{ ! startsWith(github.head_ref, 'develop/') }}
     runs-on: ubuntu-latest
     steps:
+      - run: echo ${{ github.head_ref }}
       - uses: http://sigyl.com:3000/actions/checkout@v3.5.4
         with:
           token: ${{ secrets.BOT_TOKEN }}
