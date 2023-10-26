@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo ${{ github.head_ref }}
-      - uses: RouxAntoine//checkout@v3.5.4
+      - uses: RouxAntoine/checkout@v3.5.4
         with:
           token: ${{ secrets.BOT_TOKEN }}
       - name: delete develop branch
