@@ -67,4 +67,9 @@ jobs:
       github.server_url == 'https://github.com'
     runs-on: ubuntu-latest
     steps:
-      - run: release on github
+      - id: timeseries
+        uses: pozetroninc/github-action-get-latest-release@master
+      - name: json
+        run: echo $JSON
+        env:
+          JSON: ${{ toJSON(steps) }}
