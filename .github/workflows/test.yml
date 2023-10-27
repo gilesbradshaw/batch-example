@@ -10,8 +10,8 @@ jobs:
         with:
           token: ${{ secrets.BOT_TOKEN }}
       - id: get-latest-release
-        uses: gilesbradshaw/gitea-action-get-latest-release@v0.0.1
+        uses: gilesbradshaw/gitea-action-get-latest-release@debugger
         with:
           repository: ${{ github.repository }}
           token: ${{ secrets.BOT_TOKEN }}
-      - run: echo ${{ github.steps.get-latest-release.release}}
+      - run: echo ${{ github.steps.get-latest-release.release }}
