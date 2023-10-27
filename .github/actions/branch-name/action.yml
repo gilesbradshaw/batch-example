@@ -22,8 +22,5 @@ runs:
         firstString=${{ inputs.name }}
         secondString=${{ inputs.with }}
         toreplace=${{ inputs.replace }}
-        echo "branch_name=${firstString/${toreplace}\//"$secondString"\/}" >> "$GITHUB_OUTPUT"
-        echo "branch_name=hereiam"  >> "$GITHUB_OUTPUT"
-        cat $GITHUB_OUTPUT
-    - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
-      shell: bash
+        #echo "branch_name=${firstString/${toreplace}\//"$secondString"\/}" >> "$GITHUB_OUTPUT"
+        echo branch_name=hello >> $GITHUB_OUTPUT
