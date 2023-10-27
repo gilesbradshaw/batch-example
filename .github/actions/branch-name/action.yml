@@ -10,9 +10,6 @@ inputs:
   with:
     description: 'replace with'
     required: true
-outputs:
-  branch_name:
-    description: the new name
 runs:
   using: "composite"
   steps:
