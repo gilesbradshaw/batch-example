@@ -6,6 +6,7 @@ runs:
   using: "composite"
   steps:
     - name: changes
+      shell: bash
       run: |
         if [[ $(git diff | wc -c) -eq 0 ]]; then
           echo "changes=false" >> $GITHUB_OUTPUT
