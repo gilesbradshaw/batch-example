@@ -1,5 +1,6 @@
 name: git-prep
 description: fetches and configs git
+shell: bash
 runs:
   using: "composite"
   steps:
