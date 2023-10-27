@@ -1,8 +1,8 @@
 name: git-prep
 description: fetches and configs git
-shell: bash
 runs:
   using: "composite"
+  shell: bash
   steps:
     - run: git fetch --depth=1
     - name: git config
