@@ -3,6 +3,7 @@ description: tests setting an output
 outputs:
   test_output:
     description: the output
+    value: ${{ steps.test.outputs.test_output }}
 runs:
   using: "composite"
   steps:
