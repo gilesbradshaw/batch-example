@@ -69,6 +69,9 @@ jobs:
     steps:
       - id: timeseries
         uses: pozetroninc/github-action-get-latest-release@master
+        with:
+          respository: ${{ github.repository }}
+          token: ${{ secrets.BOT_TOKEN }}
       - name: json
         run: echo $JSON
         env:
