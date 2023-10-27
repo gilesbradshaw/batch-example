@@ -11,7 +11,7 @@ inputs:
     description: 'replace with'
     required: true
 outputs:
-  branch:
+  branch_name:
     description: the new name
 runs:
   using: "composite"
@@ -22,5 +22,5 @@ runs:
         firstString=${{ inputs.name }}
         secondString=${{ inputs.with }}
         toreplace=${{ inputs.replace }}
-        echo "branch=${firstString/${toreplace}\//"$secondString"\/}" >> $GITHUB_OUTPUT
+        echo "branch_name=${firstString/${toreplace}\//"$secondString"\/}" >> "$GITHUB_OUTPUT"
         cat $GITHUB_OUTPUT
