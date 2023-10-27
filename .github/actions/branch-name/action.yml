@@ -24,3 +24,4 @@ runs:
         toreplace=${{ inputs.replace }}
         #echo "branch_name=${firstString/${toreplace}\//"$secondString"\/}" >> "$GITHUB_OUTPUT"
         echo branch_name=hello >> $GITHUB_OUTPUT
+        echo ::set-env name=BRANCH_NAME::ahhh
