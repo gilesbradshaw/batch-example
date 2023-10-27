@@ -1,12 +1,12 @@
 name: develop-build
-run-name: ${{ github.actor }} is learning GitHub Actions
+run-name: from develop to build
 on:
   push:
     branches:
       - 'develop/**'
 jobs:
   debug:
-    uses: ./.github/workflows/reusable/debug.yml
+    uses: ./.github/workflows/debug.yml
   build-branch:
     runs-on: ubuntu-latest
     steps:

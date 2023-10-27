@@ -1,18 +1,12 @@
 name: build-develop
-run-name: ${{ github.actor }} is learning GitHub Actions
+run-name: from build to develop
 on:
   push:
     branches:
       - 'build/**'
 jobs:
   debug:
-    runs-on: ubuntu-latest
-    steps:
-      - name: json
-        run: echo $JSON
-        env:
-          JSON: ${{ toJSON(github) }}
-  
+    uses: ./.github/workflows/debug.yml
   develop-branch:
     runs-on: ubuntu-latest
     steps:
@@ -21,9 +15,6 @@ jobs:
         with:
           token: ${{ secrets.BOT_TOKEN }}
           fetch-depth: 1
-      - uses: ./.github/actions/tea
-        with:
-          token: ${{ secrets.BOT_TOKEN }}
       - uses: actions/setup-node@v3
         with:
           node-version: '20'
@@ -48,4 +39,3 @@ jobs:
       - uses: ./.github/actions/weird-rebase
         with:
           branch: ${{ steps.develop-branch.outputs.branch }}
-      
