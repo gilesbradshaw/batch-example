@@ -16,6 +16,7 @@ runs:
   using: "composite"
   steps:
     - name: replace
+      shell: bash
       run: |
         firstString=${{ inputs.name }}
         secondString=${{ inputs.with }}

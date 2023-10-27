@@ -6,6 +6,7 @@ runs:
   using: "composite"
   steps:
     - name: push changes
+      shell: bash
       run: |
         if [[ $(git branch -r | grep -Fx "  origin/${{ inputs.branch }}" | wc -c) -eq 0 ]]; then
           git push origin HEAD:${{ inputs.branch }};
