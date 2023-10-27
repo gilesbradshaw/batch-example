@@ -13,6 +13,7 @@ inputs:
 outputs:
   branch_name:
     description: the new name
+    value: ${{ steps.replace.outputs.replaced }}
 runs:
   using: "composite"
   steps:
@@ -22,4 +23,4 @@ runs:
         firstString=${{ inputs.name }}
         secondString=${{ inputs.with }}
         toreplace=${{ inputs.replace }}
-        echo "branch_name=${firstString/${toreplace}\//"$secondString"\/}" >> "$GITHUB_OUTPUT"
+        echo "replaced=${firstString/${toreplace}\//"$secondString"\/}" >> "$GITHUB_OUTPUT"
