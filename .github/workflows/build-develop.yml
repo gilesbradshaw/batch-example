@@ -34,7 +34,7 @@ jobs:
           name: ${{ github.ref_name }}
           replace: build
           with: develop 
-      - uses: ${{ secrets.SIGYL_ACTIONS }}/batch2yaml@master
+      - uses: gilesbradshaw/batch2yaml@master
         with:
           action: yml
           path: '.'
