@@ -10,11 +10,9 @@ jobs:
   build-branch:
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ vars.SIGYL_ACTIONS }}
-      - uses: https://sigyl.com:3001/actions/batch2yaml@master
       - uses: RouxAntoine/checkout@v3.5.4
         with:
-          token: ${{ secrets.BOT_TOKEN }}
+          token: ${{ github.token }}
           fetch-depth: '1'
       - uses: ./.github/actions/git-prep
       - uses: ./.github/actions/branch-name
@@ -25,7 +23,7 @@ jobs:
           with: build
       - uses: ./.github/actions/tea
         with:
-          token: ${{ secrets.BOT_TOKEN }}
+          token: ${{ github.token }}
       - uses: actions/setup-node@v3
         with:
           node-version: '20'
