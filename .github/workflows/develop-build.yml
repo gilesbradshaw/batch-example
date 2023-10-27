@@ -1,4 +1,4 @@
-name: build-develop-branch
+name: develop-build
 run-name: ${{ github.actor }} is learning GitHub Actions
 on:
   push:
