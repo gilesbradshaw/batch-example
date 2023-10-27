@@ -11,8 +11,8 @@ inputs:
     description: 'replace with'
     required: true
 outputs:
-
   branch:
+    required: true
 runs:
   using: "composite"
   steps:
