@@ -6,7 +6,7 @@ on:
       - 'develop/**'
 jobs:
   debug:
-    uses: ./.github/workflows/debug.yml
+    uses: ./.github/workflows/reusable/debug.yml
   build-branch:
     runs-on: ubuntu-latest
     steps:
@@ -23,11 +23,6 @@ jobs:
           name: ${{ github.ref_name }}
           replace: develop
           with: build
-      - name: json
-        run: |
-          echo $JSON
-        env:
-          JSON: ${{ toJSON(steps) }}
       - uses: actions/setup-node@v3
         with:
           node-version: '20'
