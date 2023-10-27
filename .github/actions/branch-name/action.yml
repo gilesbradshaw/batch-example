@@ -11,6 +11,7 @@ inputs:
     description: 'replace with'
     required: true
 outputs:
+
   branch:
 runs:
   using: "composite"
