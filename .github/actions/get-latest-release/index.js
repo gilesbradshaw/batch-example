@@ -18974,6 +18974,8 @@
   })();
   
   async function run() {
+    console.log('it did something')
+    return;
     try {
       console.log(JSON.stringify(github.context, null, 2))
       const api = new giteaApi('https://sigyl.com/git/', {
