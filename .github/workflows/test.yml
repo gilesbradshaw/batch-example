@@ -17,4 +17,3 @@ jobs:
           echo ${{ env.TEST}}
         env:
           JSON: ${{ toJSON(steps) }}
-      
