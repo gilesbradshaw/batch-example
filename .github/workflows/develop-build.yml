@@ -23,12 +23,9 @@ jobs:
           name: ${{ github.ref_name }}
           replace: develop
           with: build
-      - uses: ./.github/actions/test-output
-        id: test-output
       - name: json
         run: |
           echo $JSON
-          echo ${{ env.TEST_OUPUT }}
         env:
           JSON: ${{ toJSON(steps) }}
       - uses: actions/setup-node@v3
