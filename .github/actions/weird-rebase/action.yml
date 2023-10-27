@@ -2,17 +2,18 @@ name: weird-rebase
 description: kind of a rebase 🤷
 inputs:
   branch:
+    required: true
 runs:
   using: "composite"
   steps:
     - name: push changes
+      shell: bash
       run: |
         if [[ $(git branch -r | grep -Fx "  origin/${{ inputs.branch }}" | wc -c) -eq 0 ]]; then
           git push origin HEAD:${{ inputs.branch }};
         else
           if [[ $(git diff origin/${{ inputs.branch }} | wc -l) -ne 0 ]]; then
-            echo doing my weird rebase
-            git clone ${{ github.serverUrl }}/${{ github.repository }} ../cloned
+            git clone ${{ github.server_url }}/${{ github.repository }} ../cloned
             git -C ../cloned fetch origin --depth=1
             git -C ../cloned checkout ${{ inputs.branch }} || git -C ../cloned checkout -b ${{ inputs.branch }}
             mv ../cloned/.git ..

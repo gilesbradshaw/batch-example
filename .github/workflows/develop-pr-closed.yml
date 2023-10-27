@@ -1,4 +1,4 @@
-name: build-develop-branch
+name: develop-pr-closed
 run-name: ${{ github.actor }} is learning GitHub Actions
 on:
   pull_request:
@@ -40,12 +40,19 @@ jobs:
           with: build
       - name: delete build branch
         run: git push origin --delete ${{ steps.build-branch.outputs.branch }}
-  release:
-    if: github.event.pull_request.merged == true
+  release-gitea:
+    if: |
+      github.event.pull_request.merged == true &&
+      github.server_url != 'https://github.com'
     runs-on: ubuntu-latest
     steps:
       - uses: RouxAntoine/checkout@v3.5.4
         with:
+          token: ${{ secrets.BOT_TOKEN }}
+      - id: timeseries
+        uses: pozetroninc/github-action-get-latest-release@master
+        with:
+          repository: ${{ github.repository }}
           token: ${{ secrets.BOT_TOKEN }}
       - uses: ./.github/actions/tea
         with:
@@ -59,3 +66,18 @@ jobs:
           fi
           ../tea r c --note="this isrelease ${version}" --tag=${version} --title=${version}  --target=${{ github.sha }};
           echo ::set-env name=VERSION::$version;
+  release-github:
+    if: |
+      github.event.pull_request.merged == true &&
+      github.server_url == 'https://github.com'
+    runs-on: ubuntu-latest
+    steps:
+      - id: timeseries
+        uses: pozetroninc/github-action-get-latest-release@master
+        with:
+          repository: ${{ github.repository }}
+          token: ${{ secrets.BOT_TOKEN }}
+      - name: json
+        run: echo $JSON
+        env:
+          JSON: ${{ toJSON(steps) }}

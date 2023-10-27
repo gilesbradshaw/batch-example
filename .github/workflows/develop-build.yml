@@ -1,17 +1,12 @@
-name: build-develop-branch
-run-name: ${{ github.actor }} is learning GitHub Actions
+name: develop-build
+run-name: from develop to build
 on:
   push:
     branches:
       - 'develop/**'
 jobs:
   debug:
-    runs-on: ubuntu-latest
-    steps:
-      - name: json
-        run: echo $JSON
-        env:
-          JSON: ${{ toJSON(github) }}
+    uses: ./.github/workflows/debug.yml
   build-branch:
     runs-on: ubuntu-latest
     steps:
@@ -19,20 +14,19 @@ jobs:
         with:
           token: ${{ secrets.BOT_TOKEN }}
           fetch-depth: '1'
-      - uses: ./.github/actions/git-prep
+      - uses: ././.github/actions/git-prep
+      - run: echo hello=hi >> $GITHUB_OUTPUT
+        id: this
       - uses: ./.github/actions/branch-name
         id: build-branch
         with:
           name: ${{ github.ref_name }}
           replace: develop
           with: build
-      - uses: ./.github/actions/tea
-        with:
-          token: ${{ secrets.BOT_TOKEN }}
       - uses: actions/setup-node@v3
         with:
           node-version: '20'
-      - uses: https://sigyl.com:3001/actions/batch2yaml@master
+      - uses: gilesbradshaw/batch2yaml@master
         with:
           action: xml
           path: '.'

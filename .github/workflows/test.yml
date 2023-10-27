@@ -1,0 +1,13 @@
+name: test
+run-name: ${{ github.actor }} is testing GitHub Actions
+on:
+  push:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: json
+        run: |
+          echo $JSON
+        env:
+          JSON: ${{ toJSON(github) }}

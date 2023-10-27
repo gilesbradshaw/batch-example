@@ -1,0 +1,15 @@
+name: test-output
+description: tests setting an output
+outputs:
+  test_output:
+    description: the output
+    value: ${{ steps.test.outputs.test_output }}
+runs:
+  using: "composite"
+  steps:
+    - name: test
+      id: test
+      shell: bash
+      run: |
+        echo test_output=hello >> $GITHUB_OUTPUT
+        echo "TEST=yellow" >> "$GITHUB_ENV"

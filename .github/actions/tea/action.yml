@@ -7,11 +7,13 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: pwd
     - name: get tea
+      shell: bash
       run: curl https://dl.gitea.com/tea/0.9.2/tea-0.9.2-linux-386 --output ../tea
     - name: chmod
+      shell: bash
       run: chmod +x ../tea
     - name: login
+      shell: bash
       run: ../tea login add -n=this --url=${{ github.server_url}} -t=${{ inputs.token}}
         
