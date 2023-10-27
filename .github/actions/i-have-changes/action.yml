@@ -3,10 +3,12 @@ description: chnages=true of there are changes
 outputs:
   changes:
     description: true if changes
+    value: ${{ steps.changes.outputs.changes }}
 runs:
   using: "composite"
   steps:
     - name: changes
+      id: chnages
       shell: bash
       run: |
         if [[ $(git diff | wc -c) -eq 0 ]]; then

@@ -18,6 +18,7 @@ runs:
   using: "composite"
   steps:
     - name: replace
+      id: replace
       shell: bash
       run: |
         firstString=${{ inputs.name }}
