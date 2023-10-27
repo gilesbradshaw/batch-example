@@ -11,7 +11,7 @@ jobs:
           token: ${{ secrets.BOT_TOKEN }}
       
       - id: timeseries
-        uses: ./.github/actions/get-latest-release
+        uses: gilesbradshaw/gitea-action-get-latest-release@v0.0.1
         with:
           repository: ${{ github.repository }}
           token: ${{ secrets.BOT_TOKEN }}
