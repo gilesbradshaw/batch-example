@@ -9,9 +9,9 @@ jobs:
       - uses: RouxAntoine/checkout@v3.5.4
         with:
           token: ${{ secrets.BOT_TOKEN }}
-      
-      - id: timeseries
+      - id: get-latest-release
         uses: gilesbradshaw/gitea-action-get-latest-release@v0.0.1
         with:
           repository: ${{ github.repository }}
           token: ${{ secrets.BOT_TOKEN }}
+      - run: echo ${{ github.steps.get-latest-release.release}}
