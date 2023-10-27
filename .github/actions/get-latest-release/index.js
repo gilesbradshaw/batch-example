@@ -18976,30 +18976,24 @@
   async function run() {
     try {
       console.log(JSON.stringify(github.context, null, 2))
-      const api = new giteaApi('https://sigyl.com/git/', {
-        token: '11e2032eac4b1dc2301d745bc9062e4f5318a977', // generate one at https://gitea.example.com/user/settings/applications
-        customFetch: fetch,
-      });
+      const api = new giteaApi(
+        github.context.serverUrl,
+        {
+          token,
+          customFetch: fetch,
+        },
+      );
       if (api) {
         console.log('api', Object.keys(api.repos).filter((k) => k.startsWith('repo')))
       } else {
         console.log('no api')
       }
-      try {
-        const repo = await api.repos.repoListReleases('actions', 'batch-example');
-        console.log(repo);
-        console.log('yay')
-      } catch (ex) {
-        console.error(ex);
-      }
       
       if (repository) {
         [owner, repo] = repository.split("/");
       }
-      var releases = await octokit.repos.listReleases({
-        owner: owner,
-        repo: repo,
-      });
+      
+      var releases = await api.repos.repoListReleases(owner, repo);
       releases = releases.data;
       if (excludes.includes('prerelease')) {
         releases = releases.filter(x => x.prerelease != true);
