@@ -8,6 +8,7 @@ runs:
   using: "composite"
   steps:
     - name: test
+      id: test
       shell: bash
       run: |
         echo test_output=hello >> $GITHUB_OUTPUT
