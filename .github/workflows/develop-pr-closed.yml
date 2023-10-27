@@ -49,6 +49,11 @@ jobs:
       - uses: RouxAntoine/checkout@v3.5.4
         with:
           token: ${{ secrets.BOT_TOKEN }}
+      - id: timeseries
+        uses: pozetroninc/github-action-get-latest-release@master
+        with:
+          repository: ${{ github.repository }}
+          token: ${{ secrets.BOT_TOKEN }}
       - uses: ./.github/actions/tea
         with:
           token: ${{ secrets.BOT_TOKEN }}
