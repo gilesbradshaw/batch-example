@@ -2,6 +2,7 @@ name: weird-rebase
 description: kind of a rebase 🤷
 inputs:
   branch:
+    required: true
 runs:
   using: "composite"
   steps:
