@@ -16,6 +16,7 @@ jobs:
   develop-branch:
     runs-on: ubuntu-latest
     steps:
+      - run: echo ${{ vars.SIGYL_ACTIONS }}
       # https://github.com/RouxAntoine/checkout/tree/v3.5.4 
       - uses: RouxAntoine/checkout@v3.5.4
         with:
