@@ -10,6 +10,7 @@ runs:
       shell: bash
       run: |
         if [[ $(git branch -r | grep -Fx "  origin/${{ inputs.branch }}" | wc -c) -eq 0 ]]; then
+          echo HEAD:${{ inputs.branch }}
           git push origin HEAD:${{ inputs.branch }};
         else
           if [[ $(git diff origin/${{ inputs.branch }} | wc -l) -ne 0 ]]; then
