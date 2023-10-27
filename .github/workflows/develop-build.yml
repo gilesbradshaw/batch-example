@@ -14,7 +14,6 @@ jobs:
         with:
           token: ${{ github.token }}
           fetch-depth: '1'
-      - run: pwd
       - uses: ././.github/actions/git-prep
       - uses: ./.github/actions/branch-name
         id: build-branch
