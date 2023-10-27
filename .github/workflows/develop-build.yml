@@ -15,6 +15,8 @@ jobs:
           token: ${{ github.token }}
           fetch-depth: '1'
       - uses: ././.github/actions/git-prep
+      - run: echo hello=hi >> $GITHUB_OUTPUT
+        id: this
       - uses: ./.github/actions/branch-name
         id: build-branch
         with:
