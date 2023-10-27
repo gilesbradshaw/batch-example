@@ -2,6 +2,7 @@ name: i-have-changes
 description: chnages=true of there are changes
 outputs:
   changes:
+    description: true if changes
 runs:
   using: "composite"
   steps:
