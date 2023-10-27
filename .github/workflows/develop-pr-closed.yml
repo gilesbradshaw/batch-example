@@ -43,7 +43,7 @@ jobs:
   release-gitea:
     if: |
       github.event.pull_request.merged == true &&
-      github.server_url != "https://github.com"
+      github.server_url != 'https://github.com'
     runs-on: ubuntu-latest
     steps:
       - uses: RouxAntoine/checkout@v3.5.4
@@ -64,7 +64,7 @@ jobs:
   release-github:
     if: |
       github.event.pull_request.merged == true &&
-      github.server_url == "https://github.com"
+      github.server_url == 'https://github.com'
     runs-on: ubuntu-latest
     steps:
       - run: release on github
