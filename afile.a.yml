@@ -6,7 +6,7 @@
       SchemaVersion: '71'
   - Version: '1.00'
   - Area:
-    - UniqueName: AREA1444
+    - UniqueName: edited
   - EnumerationSet:
     - UniqueName: YES_NO
     - Type: '1'
