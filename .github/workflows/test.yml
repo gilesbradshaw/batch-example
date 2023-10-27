@@ -1,5 +1,5 @@
-name: develop-build
-run-name: ${{ github.actor }} is learning GitHub Actions
+name: test
+run-name: ${{ github.actor }} is testing GitHub Actions
 on:
   push:
 jobs:
