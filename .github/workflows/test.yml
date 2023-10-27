@@ -6,8 +6,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: json
-        run: |
-          echo $JSON
-        env:
-          JSON: ${{ toJSON(github) }}
+      - id: timeseries
+        uses: ./.github/actions/get-latest-release
+        with:
+          repository: ${{ github.repository }}
+          token: ${{ secrets.BOT_TOKEN }}
