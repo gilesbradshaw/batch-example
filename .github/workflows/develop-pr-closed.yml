@@ -70,7 +70,7 @@ jobs:
       - id: timeseries
         uses: pozetroninc/github-action-get-latest-release@master
         with:
-          respository: ${{ github.repository }}
+          repository: ${{ github.repository }}
           token: ${{ secrets.BOT_TOKEN }}
       - name: json
         run: echo $JSON
