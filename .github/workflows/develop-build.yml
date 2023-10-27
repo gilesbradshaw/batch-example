@@ -23,6 +23,8 @@ jobs:
           name: ${{ github.ref_name }}
           replace: develop
           with: build
+      - name: env
+        run: echo ${{ env.BRANCH_NAME }}
       - name: json
         run: echo $JSON
         env:
