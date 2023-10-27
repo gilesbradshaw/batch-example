@@ -1,0 +1,12 @@
+name: debug
+on:
+  workflow_call:
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+      - name: json
+        run: echo $JSON
+        env:
+          JSON: ${{ toJSON(github) }}
+  
