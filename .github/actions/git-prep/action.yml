@@ -2,10 +2,11 @@ name: git-prep
 description: fetches and configs git
 runs:
   using: "composite"
-  shell: bash
   steps:
     - run: git fetch --depth=1
+      shell: bash
     - name: git config
+      shell: bash
       run: |
         git config --global user.name "${{ github.actor }}"
         git config --global user.email "${{ github.event.pusher.email }}"
