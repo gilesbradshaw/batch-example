@@ -1,15 +1,25 @@
-name: test-output
-description: tests setting an output
+name: branch_name
+description: gets a branch name changing the prefix
+inputs:
+  name:
+    description: 'name of branch'
+    required: true
+  replace:
+    description: 'prefix to replace'
+    required: true
+  with:
+    description: 'replace with'
+    required: true
 outputs:
-  theoutput:
-    description: the output to test
+  branch_name:
+    description: the new name
 runs:
   using: "composite"
   steps:
-    - name: test
+    - name: replace
       shell: bash
       run: |
-        echo theoutput=hello >> $GITHUB_OUTPUT
-        echo "THE_OUPUT=tryme" >> "$GITHUB_ENV"
-        cat $GITHUB_OUTPUT
-        cat $GITHUB_ENV
+        firstString=${{ inputs.name }}
+        secondString=${{ inputs.with }}
+        toreplace=${{ inputs.replace }}
+        echo "branch_name=${firstString/${toreplace}\//"$secondString"\/}" >> "$GITHUB_OUTPUT"

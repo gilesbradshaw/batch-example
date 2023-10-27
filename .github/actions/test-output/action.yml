@@ -1,27 +1,13 @@
-name: branch-name
-description: gets a branch name replacing prefix
-inputs:
-  name:
-    description: 'name of branch'
-    required: true
-  replace:
-    description: 'prefix to replace'
-    required: true
-  with:
-    description: 'replace with'
-    required: true
+name: test-output
+description: tests setting an output
 outputs:
-  branch_name:
-    description: the new name
+  test_output:
+    description: the output
 runs:
   using: "composite"
   steps:
-    - name: replace
+    - name: test
       shell: bash
       run: |
-        firstString=${{ inputs.name }}
-        secondString=${{ inputs.with }}
-        toreplace=${{ inputs.replace }}
-        #echo "branch_name=${firstString/${toreplace}\//"$secondString"\/}" >> "$GITHUB_OUTPUT"
-        echo branch_name=hello >> $GITHUB_OUTPUT
-        echo "action_state=yellow" >> "$GITHUB_ENV"
+        echo test_output=hello >> $GITHUB_OUTPUT
+        echo "TEST=yellow" >> "$GITHUB_ENV"
