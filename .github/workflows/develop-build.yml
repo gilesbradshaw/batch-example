@@ -24,7 +24,7 @@ jobs:
           replace: develop
           with: build
       - name: env
-        run: echo ${{ env.BRANCH_NAME }}
+        run: echo ${{ env.action_state }}
       - name: json
         run: echo $JSON
         env:
