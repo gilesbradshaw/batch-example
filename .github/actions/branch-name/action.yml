@@ -11,7 +11,7 @@ inputs:
     description: 'replace with'
     required: true
 outputs:
-  branch_name:
+  branch:
     description: the new name
     value: ${{ steps.replace.outputs.replaced }}
 runs:
