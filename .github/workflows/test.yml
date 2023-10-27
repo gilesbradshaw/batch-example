@@ -6,14 +6,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: RouxAntoine/checkout@v3.5.4
-      - run: echo "thiswillwork=avalue" >> $GITHUB_OUTPUT
-        id: thisworks
-      - uses: ./.github/actions/test-output
-        id: test-output
       - name: json
         run: |
           echo $JSON
-          echo ${{ env.TEST}}
         env:
-          JSON: ${{ toJSON(steps) }}
+          JSON: ${{ toJSON(github) }}
