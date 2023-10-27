@@ -6,12 +6,7 @@ on:
       - 'develop/**'
 jobs:
   debug:
-    runs-on: ubuntu-latest
-    steps:
-      - name: json
-        run: echo $JSON
-        env:
-          JSON: ${{ toJSON(github) }}
+    uses: ./.github/reusable-workflows/debug.yml
   build-branch:
     runs-on: ubuntu-latest
     steps:
