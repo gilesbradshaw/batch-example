@@ -21,7 +21,10 @@ jobs:
           name: ${{ github.ref_name }}
           replace: develop
           with: build
-      - run: echo ${{ toJSON(steps) }}
+      - name: json
+        run: echo $JSON
+        env:
+          JSON: ${{ toJSON(steps) }}
       - uses: actions/setup-node@v3
         with:
           node-version: '20'
