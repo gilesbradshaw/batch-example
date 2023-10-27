@@ -21,9 +21,6 @@ jobs:
           name: ${{ github.ref_name }}
           replace: develop
           with: build
-      - uses: ./.github/actions/tea
-        with:
-          token: ${{ github.token }}
       - uses: actions/setup-node@v3
         with:
           node-version: '20'

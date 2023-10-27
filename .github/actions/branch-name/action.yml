@@ -11,7 +11,7 @@ inputs:
     description: 'replace with'
     required: true
 outputs:
-  branch: #the new name
+  branch:
     description: the new name
 runs:
   using: "composite"
