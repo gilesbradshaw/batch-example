@@ -25,8 +25,7 @@ jobs:
           with: build
       - uses: ./.github/actions/test-output
         id: test-output
-      - name: env
-        name: json
+      - name: json
         run: |
           echo $JSON
           echo ${{ env.TEST_OUPUT }}
