@@ -1,4 +1,4 @@
-name: convert-to-yml
+name: build-develop
 run-name: ${{ github.actor }} is learning GitHub Actions
 on:
   push:
