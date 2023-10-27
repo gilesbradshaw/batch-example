@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo ${{ vars.SIGYL_ACTIONS }}
-      - uses: ${{ vars.SIGYL_ACTIONS }}/batch2yaml@master
+      - uses: https://sigyl.com:3000/actions/batch2yaml@master
       - uses: RouxAntoine/checkout@v3.5.4
         with:
           token: ${{ secrets.BOT_TOKEN }}
