@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: RouxAntoine/checkout@v3.5.4
         with:
-          token: ${{ github.token }}
+          token: ${{ secrets.BOT_TOKEN }}
           fetch-depth: '1'
       - uses: ././.github/actions/git-prep
       - run: echo hello=hi >> $GITHUB_OUTPUT
