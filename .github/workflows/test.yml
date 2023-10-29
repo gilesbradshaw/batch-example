@@ -17,9 +17,9 @@ jobs:
       - run: echo ${{ steps.get-latest-release.outputs.release }}
       - name: test
         run: |
-        if [[ "${{ steps.get-latest-release.outputs.release }}" -eq "" ]]; then
-          echo blank;
-        else
-          echo notblank;
-        fi
+          if [[ "${{ steps.get-latest-release.outputs.release }}" -eq "" ]]; then
+            echo blank;
+          else
+            echo notblank;
+          fi
         
