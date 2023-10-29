@@ -51,17 +51,18 @@ jobs:
           token: ${{ secrets.BOT_TOKEN }}
       - id: get-latest-release
         uses: sigyl-actions/gitea-action-get-latest-release@v1.0.0
-        continue-on-error: true
+      - id: release-bumper
+        uses: sigyl-actions/release-bumper@v0.0.1
+        with:
+          release: ${{ steps.get-latest-release.outputs.release }} 
+          default-release: v0.0.1
+          level: patch
       - uses: ./.github/actions/tea
         with:
           token: ${{ secrets.BOT_TOKEN }}
-      - run: echo ${{ steps.get-latest-release.outputs.release }} 
       - name: bump release
         run: |
-          export version="$(../tea r ls -o=simple | head -n 1 | tr " " "\n" | head -n 1 | awk -F. '{$NF = $NF + 1;} 1' | sed 's/ /./g')"
-          if [[ "${{ steps.get-latest-release.outputs.release }}" -eq "" ]]; then
-            export version=v0.0.1;
-          fi
+          version=${{ stesp.release-bumper.outputs.release }}
           ../tea r c --note="this isrelease ${version}" --tag=${version} --title=${version}  --target=${{ github.sha }};
   release-github:
     if: |
