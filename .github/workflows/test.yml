@@ -18,13 +18,13 @@ jobs:
         uses: ./.github/actions/release-bumper
         with:
           release: ${{ steps.get-latest-release.outputs.release }} 
-          default-release: V1.0.0
+          default-release: v1.0.0
           level: patch
       - id: release-bumper-1
         uses: ./.github/actions/release-bumper
         with:
           release: ${{ steps.release-bumper.outputs.release }} 
-          default-release: V1.0.0
+          default-release: v1.0.0
           level: patch
       - run: echo ${{ steps.release-bumper.outputs.release }}
       - run: echo ${{ steps.release-bumper-1.outputs.release }}
