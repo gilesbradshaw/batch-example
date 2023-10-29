@@ -2831,8 +2831,8 @@
     const [value] = String(current).split('-')
     const components = value.split(/\./)
     const major = components[0] || 0;
-    const minor = components[1] || 0;
-    const patch = components[2] || 0;
+    const minor = Number(components[1]) || 0;
+    const patch = Number(components[2]) || 0;
     switch (level) {
       case 'major':
         return [addRelease(major,amount), 0, 0].join('.')
