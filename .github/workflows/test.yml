@@ -10,7 +10,7 @@ jobs:
         with:
           token: ${{ secrets.BOT_TOKEN }}
       - id: get-latest-release
-        uses: sigyl-actions/gitea-action-get-latest-release@v1.0.0
+        uses: ./.github/actions/get-latest-release/action.yml
         with:
           repository: ${{ github.repository }}
           token: ${{ secrets.BOT_TOKEN }}
