@@ -1,14 +1,14 @@
 {
   "token": "***",
-  "job": "test",
-  "ref": "refs/heads/develop/reusable-workflows",
-  "sha": "23875683ea411b3b1f0ced33fb0f5486636efde1",
+  "job": "debug",
+  "ref": "refs/heads/build/reusable-workflows",
+  "sha": "e3e5866d4adf01b01ea7518b9a1da91f8ab3dfca",
   "repository": "gilesbradshaw/batch-example",
   "repository_owner": "gilesbradshaw",
   "repository_owner_id": "597115",
   "repositoryUrl": "git://github.com/gilesbradshaw/batch-example.git",
-  "run_id": "6668891310",
-  "run_number": "21",
+  "run_id": "6669330844",
+  "run_number": "9",
   "retention_days": "90",
   "run_attempt": "1",
   "artifact_cache_size_limit": "10",
@@ -19,14 +19,14 @@
   "actor_id": "597115",
   "actor": "gilesbradshaw",
   "triggering_actor": "gilesbradshaw",
-  "workflow": "test",
+  "workflow": "build-develop",
   "head_ref": "",
   "base_ref": "",
   "event_name": "push",
   "event": {
-    "after": "23875683ea411b3b1f0ced33fb0f5486636efde1",
+    "after": "e3e5866d4adf01b01ea7518b9a1da91f8ab3dfca",
     "base_ref": null,
-    "before": "6eb92ec4f9bf0bc9e09454656c70808a24208258",
+    "before": "0000000000000000000000000000000000000000",
     "commits": [
       {
         "author": {
@@ -40,15 +40,15 @@
           "username": "gilesbradshaw"
         },
         "distinct": true,
-        "id": "23875683ea411b3b1f0ced33fb0f5486636efde1",
-        "message": "build/reusable-workflows -> develop/reusable-workflows",
-        "timestamp": "2023-10-27T15:01:31Z",
-        "tree_id": "036ac7930d44b4fd1d04291123f91286a9138151",
-        "url": "https://github.com/gilesbradshaw/batch-example/commit/23875683ea411b3b1f0ced33fb0f5486636efde1"
+        "id": "e3e5866d4adf01b01ea7518b9a1da91f8ab3dfca",
+        "message": "develop/reusable-workflows -> build/reusable-workflows",
+        "timestamp": "2023-10-27T15:41:44Z",
+        "tree_id": "1babdfaed8745400a3df5125208df2e56d22bebb",
+        "url": "https://github.com/gilesbradshaw/batch-example/commit/e3e5866d4adf01b01ea7518b9a1da91f8ab3dfca"
       }
     ],
-    "compare": "https://github.com/gilesbradshaw/batch-example/compare/6eb92ec4f9bf...23875683ea41",
-    "created": false,
+    "compare": "https://github.com/gilesbradshaw/batch-example/commit/e3e5866d4adf",
+    "created": true,
     "deleted": false,
     "forced": false,
     "head_commit": {
@@ -63,17 +63,17 @@
         "username": "gilesbradshaw"
       },
       "distinct": true,
-      "id": "23875683ea411b3b1f0ced33fb0f5486636efde1",
-      "message": "build/reusable-workflows -> develop/reusable-workflows",
-      "timestamp": "2023-10-27T15:01:31Z",
-      "tree_id": "036ac7930d44b4fd1d04291123f91286a9138151",
-      "url": "https://github.com/gilesbradshaw/batch-example/commit/23875683ea411b3b1f0ced33fb0f5486636efde1"
+      "id": "e3e5866d4adf01b01ea7518b9a1da91f8ab3dfca",
+      "message": "develop/reusable-workflows -> build/reusable-workflows",
+      "timestamp": "2023-10-27T15:41:44Z",
+      "tree_id": "1babdfaed8745400a3df5125208df2e56d22bebb",
+      "url": "https://github.com/gilesbradshaw/batch-example/commit/e3e5866d4adf01b01ea7518b9a1da91f8ab3dfca"
     },
     "pusher": {
       "email": "giles.bradshaw@sigyl.com",
       "name": "gilesbradshaw"
     },
-    "ref": "refs/heads/develop/reusable-workflows",
+    "ref": "refs/heads/build/reusable-workflows",
     "repository": {
       "allow_forking": true,
       "archive_url": "https://api.github.com/repos/gilesbradshaw/batch-example/{archive_format}{/ref}",
@@ -156,7 +156,7 @@
       },
       "private": false,
       "pulls_url": "https://api.github.com/repos/gilesbradshaw/batch-example/pulls{/number}",
-      "pushed_at": 1698418892,
+      "pushed_at": 1698421304,
       "releases_url": "https://api.github.com/repos/gilesbradshaw/batch-example/releases{/id}",
       "size": 87,
       "ssh_url": "git@github.com:gilesbradshaw/batch-example.git",
@@ -202,12 +202,12 @@
   "server_url": "https://github.com",
   "api_url": "https://api.github.com",
   "graphql_url": "https://api.github.com/graphql",
-  "ref_name": "develop/reusable-workflows",
+  "ref_name": "build/reusable-workflows",
   "ref_protected": false,
   "ref_type": "branch",
   "secret_source": "Actions",
-  "workflow_ref": "gilesbradshaw/batch-example/.github/workflows/test.yml@refs/heads/develop/reusable-workflows",
-  "workflow_sha": "23875683ea411b3b1f0ced33fb0f5486636efde1",
+  "workflow_ref": "gilesbradshaw/batch-example/.github/workflows/build-develop.yml@refs/heads/build/reusable-workflows",
+  "workflow_sha": "e3e5866d4adf01b01ea7518b9a1da91f8ab3dfca",
   "workspace": "/home/runner/work/batch-example/batch-example",
   "action": "__run"
 }
