@@ -15450,7 +15450,7 @@
             ),
         );
       if (releases.length) {
-        core.setOutput('release', releases[0].tag_name);
+        core.setOutput('release', null);
         core.setOutput('id', String(releases[0].id));
         core.setOutput('description', String(releases[0].body));
         // core.setOutput('releases', releases);
