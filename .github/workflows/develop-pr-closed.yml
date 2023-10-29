@@ -49,20 +49,20 @@ jobs:
       - uses: RouxAntoine/checkout@v3.5.4
         with:
           token: ${{ secrets.BOT_TOKEN }}
-      - id: timeseries
+      - id: get-latest-release
         uses: sigyl-actions/gitea-action-get-latest-release@v1.0.0
+        continue-on-error: true
       - uses: ./.github/actions/tea
         with:
           token: ${{ secrets.BOT_TOKEN }}
+      - run: echo ${{ steps.get-latest-release.outputs.release }} 
       - name: bump release
         run: |
-          ../tea r ls -o=simple
           export version="$(../tea r ls -o=simple | head -n 1 | tr " " "\n" | head -n 1 | awk -F. '{$NF = $NF + 1;} 1' | sed 's/ /./g')"
-          if [[ $version -eq "" ]]; then
+          if [[ "${{ steps.get-latest-release.outputs.release }}" -eq "" ]]; then
             export version=v0.0.1;
           fi
           ../tea r c --note="this isrelease ${version}" --tag=${version} --title=${version}  --target=${{ github.sha }};
-          echo ::set-env name=VERSION::$version;
   release-github:
     if: |
       github.event.pull_request.merged == true &&
