@@ -2820,17 +2820,22 @@
   
   const core = __nccwpck_require__(186);
   
+  const addRelease = (
+    component,
+    amount,
+  ) => `${component.replace(/\D/g,'')}${Number(component.replace(/\D/g,'') || 0) + amount}`
+  
   const versionUp = (current, level, amount) => {
     // from https://raw.githubusercontent.com/okunishinishi/node-versionup/master/lib/_next_version.js
     // get id of prerelease
     const [value] = String(current).split('-')
     const components = value.split(/\./)
-    const major = Number(components[0] || 0)
-    const minor = Number(components[1] || 0)
-    const patch = Number(components[2] || 0)
+    const major = components[0] || 0;
+    const minor = components[1] || 0;
+    const patch = components[2] || 0;
     switch (level) {
       case 'major':
-        return [major + amount, 0, 0].join('.')
+        return [addRelease(major,amount), 0, 0].join('.')
       case 'minor':
         return [major, minor + amount, 0].join('.')
       case 'micro':
@@ -2844,7 +2849,7 @@
     core.setOutput(
       'release',
       versionUp(
-        core.getInput('release') || 'v0.0.0',
+        core.getInput('release'),
         core.getInput('level') || 'patch',
         1,
       )
