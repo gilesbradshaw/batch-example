@@ -14,7 +14,10 @@ jobs:
         with:
           token: ${{ secrets.BOT_TOKEN }}
           fetch-depth: '1'
-      - id: elease-asset
+      - uses: http://sigyl.com:3000/actions/setup-node@v3
+        with:
+          node-version: '20'
+      - id: release-asset
         #uses: sigyl-actions/gitea-action-get-latest-release@develop/no-error
         uses: ./.github/actions/gitea-action-release-asset
         with:
