@@ -14,7 +14,7 @@ jobs:
         with:
           token: ${{ secrets.BOT_TOKEN }}
           fetch-depth: '1'
-      - uses: http://sigyl.com:3000/actions/setup-node@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: '20'
       - id: release-asset
