@@ -1,4 +1,4 @@
-name: develop-build
+name: loop
 run-name: from develop to build
 on:
   push:

@@ -1,0 +1,34 @@
+name: release
+run-name: from develop to build
+on:
+  push:
+    branches:
+      - loop
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: RouxAntoine/checkout@v3.5.4
+        with:
+          token: ${{ secrets.BOT_TOKEN }}
+          fetch-depth: '1'
+      - id: get-latest-release
+        uses: sigyl-actions/gitea-action-get-latest-release@v2.0.0
+        with:
+          token: ${{ secrets.BOT_TOKEN }}
+      - id: release-bumper
+        uses: sigyl-actions/release-bumper@v0.0.1
+        with:
+          release: ${{ steps.get-latest-release.outputs.release }} 
+          default-release: v0.0.1
+          level: patch
+      - uses: sigyl-actions/gitea-release@main
+        with:
+          note: |
+            this is a release
+            with a few libnes in the note
+          tag: ${{ steps.release-bumper.outputs.release }}
+          title: ${{ steps.release-bumper.outputs.release }}
+          # target:
+          token: ${{ secrets.BOT_TOKEN }}
+  
