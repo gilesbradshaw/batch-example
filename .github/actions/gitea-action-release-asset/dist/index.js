@@ -39246,7 +39246,7 @@ async function run() {
   try {
     const serverUrl = _actions_core__WEBPACK_IMPORTED_MODULE_1__.getInput('serverUrl')
       || (_actions_github__WEBPACK_IMPORTED_MODULE_2__.context.runId && _actions_github__WEBPACK_IMPORTED_MODULE_2__.context.serverUrl)
-
+    
     const client = new gitea_api__WEBPACK_IMPORTED_MODULE_3__/* .GiteaApi */ .D9({
       BASE: `${serverUrl}/api/v1`,
       WITH_CREDENTIALS: true,
@@ -39255,22 +39255,22 @@ async function run() {
   const [owner, repo] = (
     _actions_core__WEBPACK_IMPORTED_MODULE_1__.getInput('repository')
       || _actions_github__WEBPACK_IMPORTED_MODULE_2__.context.payload.repository.full_name
+      || 'actions/batch-example'
   ).split("/");
-  console.log(JSON.stringify(_actions_github__WEBPACK_IMPORTED_MODULE_2__.context, null, 2))
+  
   const content = '<q id="a"><span id="b">hey!</span></q>'; // the body of the new file…
   const blob = new buffer__WEBPACK_IMPORTED_MODULE_0__.Blob([content], { type: "text/xml" });
   console.log(
     await client.repository.repoCreateReleaseAttachment({
       owner,
       repo,
-      id: _actions_core__WEBPACK_IMPORTED_MODULE_1__.getInput('id'),
+      id: _actions_core__WEBPACK_IMPORTED_MODULE_1__.getInput('id') || _actions_github__WEBPACK_IMPORTED_MODULE_2__.context.payload.release.id,
       attachment: blob,
       name: 'tryme',
     }),
   );
   }
   catch (error) {
-    console.log(error)
     _actions_core__WEBPACK_IMPORTED_MODULE_1__.setFailed(error.message);
   }
 }
