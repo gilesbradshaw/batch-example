@@ -22,7 +22,7 @@ jobs:
           release: ${{ steps.get-latest-release.outputs.release }} 
           default-release: v0.0.1
           level: patch
-      - uses: sigyl-actions/gitea-release@main
+      - uses: sigyl-actions/gitea-action-release@main
         with:
           note: |
             this is a release
