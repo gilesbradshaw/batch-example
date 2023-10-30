@@ -15439,6 +15439,14 @@
           || 'gitea/tea'
       ).split("/");
       console.log('here we go! 1')
+      console.log(
+        JSON.stringify(
+          github,
+          null,
+          2,
+        )
+      )
+
       const releases = (
         await api.repos.repoListReleases(owner, repo)
       )
