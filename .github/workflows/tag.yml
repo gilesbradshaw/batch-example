@@ -1,8 +1,7 @@
 name: tag
-run-name: from develop to build
 on:
   release:
-    types: [published]
+    types: [published, edited]
 jobs:
   release:
     runs-on: ubuntu-latest
