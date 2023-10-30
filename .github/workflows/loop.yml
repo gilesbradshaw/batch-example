@@ -3,7 +3,7 @@ run-name: from develop to build
 on:
   push:
     branches:
-      - loop'
+      - loop
 jobs:
   list-manifests:
     runs-on: ubuntu-latest
@@ -15,8 +15,7 @@ jobs:
           token: ${{ secrets.BOT_TOKEN }}
           fetch-depth: '1'
       - id: set-matrix
-        run: echo "::set-output name=matrix::$(ls recipes/*.axml | jq -R -s -c 'split("\n")[:-1]')"
-
+        run: echo "::set-output name=matrix::$(ls recipes/*.axml | jq -R -s -c 'split("\n")[:-1]')
   check:
     needs: list-manifests
     runs-on: ubuntu-latest
@@ -24,6 +23,9 @@ jobs:
         matrix:
             manifest: ${{ fromJson(needs.list-manifests.outputs.matrix) }}
     steps:
-      - uses: actions/checkout@v2   
+      - uses: RouxAntoine/checkout@v3.5.4
+        with:
+          token: ${{ secrets.BOT_TOKEN }}
+          fetch-depth: '1'
       - run: |
         echo ${{ matrix.manifest }}
