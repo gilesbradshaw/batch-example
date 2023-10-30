@@ -15421,6 +15421,8 @@
   
   async function run() {
     try {    
+      console.log('here we go!')
+      
       const api = new giteaApi(
         core.getInput('serverUrl')
           || (github.context.runId && github.context.serverUrl)
