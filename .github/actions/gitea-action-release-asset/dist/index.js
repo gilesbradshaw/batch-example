@@ -39231,9 +39231,12 @@ module.exports = JSON.parse('[[[0,44],"disallowed_STD3_valid"],[[45,46],"valid"]
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
-/* harmony import */ var _actions_core__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(2186);
-/* harmony import */ var _actions_github__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(5438);
-/* harmony import */ var gitea_api__WEBPACK_IMPORTED_MODULE_2__ = __nccwpck_require__(5371);
+/* harmony import */ var buffer__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(4300);
+/* harmony import */ var _actions_core__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(2186);
+/* harmony import */ var _actions_github__WEBPACK_IMPORTED_MODULE_2__ = __nccwpck_require__(5438);
+/* harmony import */ var gitea_api__WEBPACK_IMPORTED_MODULE_3__ = __nccwpck_require__(5371);
+
+
 
 
 
@@ -39241,33 +39244,33 @@ var __webpack_exports__ = {};
 
 async function run() {
   try {
-    const serverUrl = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('serverUrl')
-      || (_actions_github__WEBPACK_IMPORTED_MODULE_1__.context.runId && _actions_github__WEBPACK_IMPORTED_MODULE_1__.context.serverUrl)
+    const serverUrl = _actions_core__WEBPACK_IMPORTED_MODULE_1__.getInput('serverUrl')
+      || (_actions_github__WEBPACK_IMPORTED_MODULE_2__.context.runId && _actions_github__WEBPACK_IMPORTED_MODULE_2__.context.serverUrl)
 
-    const client = new gitea_api__WEBPACK_IMPORTED_MODULE_2__/* .GiteaApi */ .D9({
+    const client = new gitea_api__WEBPACK_IMPORTED_MODULE_3__/* .GiteaApi */ .D9({
       BASE: `${serverUrl}/api/v1`,
       WITH_CREDENTIALS: true,
-      TOKEN: _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('token'),
+      TOKEN: _actions_core__WEBPACK_IMPORTED_MODULE_1__.getInput('token'),
   });
   const [owner, repo] = (
-    _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('repository')
-      || _actions_github__WEBPACK_IMPORTED_MODULE_1__.context.payload.repository.full_name
+    _actions_core__WEBPACK_IMPORTED_MODULE_1__.getInput('repository')
+      || _actions_github__WEBPACK_IMPORTED_MODULE_2__.context.payload.repository.full_name
   ).split("/");
   
   const content = '<q id="a"><span id="b">hey!</span></q>'; // the body of the new file…
-  const blob = new Blob([content], { type: "text/xml" });
+  const blob = new buffer__WEBPACK_IMPORTED_MODULE_0__.Blob([content], { type: "text/xml" });
   console.log(
     await client.repository.repoCreateReleaseAttachment({
       owner,
       repo,
-      id: _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('repository'),
+      id: _actions_core__WEBPACK_IMPORTED_MODULE_1__.getInput('repository'),
       attachment: blob,
       name: 'tryme',
     }),
   );
   }
   catch (error) {
-    _actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed(error.message);
+    _actions_core__WEBPACK_IMPORTED_MODULE_1__.setFailed(error.message);
   }
 }
 
