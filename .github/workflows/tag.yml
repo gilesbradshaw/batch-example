@@ -17,6 +17,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '20'
+      - run: echo ${{ github.event.release.id }}
       - id: release-asset
         #uses: sigyl-actions/gitea-action-get-latest-release@develop/no-error
         uses: ./.github/actions/gitea-action-release-asset
