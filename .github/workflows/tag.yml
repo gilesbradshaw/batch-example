@@ -10,4 +10,15 @@ jobs:
         run: echo $JSON
         env:
           JSON: ${{ toJSON(github) }}
+      - uses: RouxAntoine/checkout@v3.5.4
+        with:
+          token: ${{ secrets.BOT_TOKEN }}
+          fetch-depth: '1'
+      - id: elease-asset
+        #uses: sigyl-actions/gitea-action-get-latest-release@develop/no-error
+        uses: ./.github/actions/gitea-action-release-asset
+        with:
+          token: ${{ secrets.BOT_TOKEN }}
+          #repository: ${{ github.repository }}
+      
   
