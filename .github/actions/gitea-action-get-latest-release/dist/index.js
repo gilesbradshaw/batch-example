@@ -15441,7 +15441,7 @@
       console.log('here we go! 1')
       console.log(
         JSON.stringify(
-          github,
+          github.context.repository,
           null,
           2,
         )
