@@ -3,7 +3,7 @@ run-name: from develop to build
 on:
   push:
     branches:
-      - 'loop'
+      - loop'
 jobs:
   list-manifests:
     runs-on: ubuntu-latest
