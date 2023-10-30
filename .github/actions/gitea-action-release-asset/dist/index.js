@@ -39256,7 +39256,7 @@ async function run() {
     _actions_core__WEBPACK_IMPORTED_MODULE_1__.getInput('repository')
       || _actions_github__WEBPACK_IMPORTED_MODULE_2__.context.payload.repository.full_name
   ).split("/");
-  
+  console.log(JSON.stringify(_actions_github__WEBPACK_IMPORTED_MODULE_2__.context, null, 2))
   const content = '<q id="a"><span id="b">hey!</span></q>'; // the body of the new file…
   const blob = new buffer__WEBPACK_IMPORTED_MODULE_0__.Blob([content], { type: "text/xml" });
   console.log(
