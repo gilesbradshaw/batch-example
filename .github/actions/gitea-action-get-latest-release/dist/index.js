@@ -15459,7 +15459,7 @@
               true,
             ),
         );
-      console.log('here we go! 2')
+      console.log(releases[0])
       if (releases.length) {
         core.setOutput('release', null);
         core.setOutput('id', String(releases[0].id));
