@@ -24,7 +24,8 @@ jobs:
           release: ${{ steps.get-latest-release.outputs.release }} 
           default-release: v0.0.1
           level: patch
-      - uses: sigyl-actions/gitea-action-release@main
+      #- uses: sigyl-actions/gitea-action-release@main
+      - uses: ./.github/actions/gitea-action-release
         with:
           note: |
             this is a release
