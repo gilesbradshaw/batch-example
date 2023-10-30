@@ -15431,11 +15431,11 @@
         },
       );
       console.log(
-        JSON.stringify(github.context, null, 2)
+        JSON.stringify(github.context.payload.repository, null, 2)
       )
       const [owner, repo] = (
         core.getInput('repository')
-          || github.context.repository
+          || github.context.payload.repository.full_name
       ).split("/");
       await api.repos.repoCreateRelease(
         owner,
