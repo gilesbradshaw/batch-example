@@ -17,7 +17,7 @@ jobs:
         uses: ./.github/actions/gitea-action-get-latest-release
         with:
           token: ${{ secrets.BOT_TOKEN }}
-          repository: ${{ github.payload.repository.full_name}}
+          repository: ${{ github.repository }}
       - id: release-bumper
         uses: sigyl-actions/release-bumper@v0.0.1
         with:
