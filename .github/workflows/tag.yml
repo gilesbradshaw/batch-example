@@ -1,0 +1,13 @@
+name: tag
+run-name: from develop to build
+on:
+  tag:
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: json
+        run: echo $JSON
+        env:
+          JSON: ${{ toJSON(github) }}
+  
