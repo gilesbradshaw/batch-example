@@ -39263,7 +39263,7 @@ async function run() {
     await client.repository.repoCreateReleaseAttachment({
       owner,
       repo,
-      id: _actions_core__WEBPACK_IMPORTED_MODULE_1__.getInput('repository'),
+      id: _actions_core__WEBPACK_IMPORTED_MODULE_1__.getInput('id'),
       attachment: blob,
       name: 'tryme',
     }),
