@@ -13,19 +13,19 @@ jobs:
           token: ${{ secrets.BOT_TOKEN }}
           fetch-depth: '1'
       - id: get-latest-release
-        #uses: sigyl-actions/gitea-action-get-latest-release@v2.0.0
-        uses: ./.github/actions/gitea-action-get-latest-release
+        uses: sigyl-actions/gitea-action-get-latest-release@main
+        #uses: ./.github/actions/gitea-action-get-latest-release
         with:
           token: ${{ secrets.BOT_TOKEN }}
-          repository: ${{ github.repository }}
+          #repository: ${{ github.repository }}
       - id: release-bumper
         uses: sigyl-actions/release-bumper@v0.0.1
         with:
           release: ${{ steps.get-latest-release.outputs.release }} 
           default-release: v0.0.1
           level: patch
-      #- uses: sigyl-actions/gitea-action-release@main
-      - uses: ./.github/actions/gitea-action-release
+      - uses: sigyl-actions/gitea-action-release@main
+      #- uses: ./.github/actions/gitea-action-release
         with:
           note: |
             this is a release
