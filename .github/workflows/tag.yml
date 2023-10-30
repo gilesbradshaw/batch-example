@@ -23,6 +23,8 @@ jobs:
         uses: ./.github/actions/gitea-action-release-asset
         with:
           token: ${{ secrets.BOT_TOKEN }}
+          asset: ./README.md
+          asset-name: its a kind of magic
           #id: ${{ github.event.release.id }}
           #repository: ${{ github.repository }}
       
