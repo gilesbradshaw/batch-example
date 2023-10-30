@@ -15438,7 +15438,7 @@
           || github.context.repository
           || 'gitea/tea'
       ).split("/");
-  
+      console.log('here we go! 1')
       const releases = (
         await api.repos.repoListReleases(owner, repo)
       )
@@ -15451,6 +15451,7 @@
               true,
             ),
         );
+      console.log('here we go! 2')
       if (releases.length) {
         core.setOutput('release', null);
         core.setOutput('id', String(releases[0].id));
@@ -15463,6 +15464,7 @@
       }
     }
     catch (error) {
+      console.log(error)
       core.setFailed(error.message);
     }
   }
