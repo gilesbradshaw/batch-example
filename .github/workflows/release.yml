@@ -13,7 +13,7 @@ jobs:
           token: ${{ secrets.BOT_TOKEN }}
           fetch-depth: '1'
       - id: get-latest-release
-        uses: sigyl-actions/gitea-action-get-latest-release@main
+        uses: sigyl-actions/gitea-action-get-latest-release@develop/no-error
         #uses: ./.github/actions/gitea-action-get-latest-release
         with:
           token: ${{ secrets.BOT_TOKEN }}
