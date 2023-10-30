@@ -1,9 +1,9 @@
 name: tag
 run-name: from develop to build
-on:
-  push:
-    branches:
-      - loop
+#on:
+#  release:
+#    types:
+#      - created
 jobs:
   release:
     runs-on: ubuntu-latest
