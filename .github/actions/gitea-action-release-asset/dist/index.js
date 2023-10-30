@@ -39262,7 +39262,7 @@ async function run() {
   ).split("/");
   
   // const content = '<q id="a"><span id="b">hey!</span></q>'; // the body of the new file…
-  const content = fs__WEBPACK_IMPORTED_MODULE_0__.readFileAsync(_actions_core__WEBPACK_IMPORTED_MODULE_2__.getInput('asset'))
+  const content = fs__WEBPACK_IMPORTED_MODULE_0__.readFileSync(_actions_core__WEBPACK_IMPORTED_MODULE_2__.getInput('asset'))
   const blob = new buffer__WEBPACK_IMPORTED_MODULE_1__.Blob([content]);
   console.log(
     await client.repository.repoCreateReleaseAttachment({
