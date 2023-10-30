@@ -15,7 +15,7 @@ jobs:
           token: ${{ secrets.BOT_TOKEN }}
           fetch-depth: '1'
       - id: set-matrix
-        run: echo ::set-output name=matrix::$(ls recipes/*.axml | jq -R -s -c 'split("\n")[:-1]')
+        run: echo matrix=$(ls recipes/*.axml | jq -R -s -c 'split("\n")[:-1]') >> $GITHUB_OUTPUT
   check:
     needs: list-manifests
     runs-on: ubuntu-latest
@@ -27,5 +27,4 @@ jobs:
         with:
           token: ${{ secrets.BOT_TOKEN }}
           fetch-depth: '1'
-      - run: |
-        echo ${{ matrix.manifest }}
+      - run: echo ${{ matrix.manifest }}
