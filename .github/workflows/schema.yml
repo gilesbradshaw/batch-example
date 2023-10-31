@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        manifest: ${{ fromJSON(needs.list-axmls.outputs.matrix) }}
+        manifest: ${{ fromJSON('["afile.axml"]' }}
     steps:
       - uses: RouxAntoine/checkout@v3.5.4
         with:
