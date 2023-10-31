@@ -1,5 +1,5 @@
-name: release
-run-name: from develop to build
+name: schema
+run-name: validating schemas
 on:
   push:
 jobs:

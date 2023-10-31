@@ -8,8 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: RouxAntoine/checkout@v3.5.4
-          with:
-            token: ${{ secrets.BOT_TOKEN }}
+        with:
+          token: ${{ secrets.BOT_TOKEN }}
       #- name: Download schema
       #  run: wget https://apps.nextcloud.com/schema/apps/info.xsd
       - name: Validate info.xml using XML schema info.xsd
