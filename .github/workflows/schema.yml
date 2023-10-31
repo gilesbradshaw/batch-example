@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - id: tryme
-      run: echo "::set-output name=matrix::{\"include\":[{\"project\":\"foo\",\"config\":\"Debug\"},{\"project\":\"bar\",\"config\":\"Release\"}]}"
+      run: echo "::set-output name=matrix::[\"afile\"]"
     - run: echo ${{ needs.job1.outputs.matrix }}
     - run: echo ${{ steps.tryme.outputs.matrix }}
   job2:
