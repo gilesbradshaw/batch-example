@@ -9,7 +9,7 @@ jobs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
     - id: set-matrix
-      run: echo "::set-output name=matrix::{\"include\":[{\"project\":\"foo\",\"config\":\"Debug\"},{\"project\":\"bar\",\"config\":\"Release\"}]}"
+      run: echo "::set-output name=matrix::[\"afile\"]"
   tester:
     needs: job1
     runs-on: ubuntu-latest
@@ -17,15 +17,16 @@ jobs:
     - id: tryme
       run: echo "::set-output name=matrix::[\"afile\"]"
     - run: echo ${{ needs.job1.outputs.matrix }}
-    - run: echo ${{ fromJSON(steps.tryme.outputs.matrix) }}
+    - run: echo ${{ fromJson(steps.tryme.outputs.matrix) }}
   job2:
     needs: job1
     runs-on: ubuntu-latest
     strategy:
-      matrix: ${{ fromJSON(needs.job1.outputs.matrix) }}
+      matrix:
+        manifest: ${{ fromJSON(needs.job1.outputs.matrix) }}
     steps:
     - run: echo ${{ needs.job1.outputs.matrix }}
-    - run: echo ${{ matrix.project }}
+    - run: echo ${{ matrix.manifest }}
     - run: echo ${{ matrix.config }}
   job3:
     needs: job1
