@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        manifest: ${{fromJson(needs.job1.outputs.matrix)}}
+        manifest: ${{fromJSON(needs.job1.outputs.matrix)}}
     steps:
     - run: echo ${{ matrix.manifest }}
   list-axmls:
