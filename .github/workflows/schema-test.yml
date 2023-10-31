@@ -15,7 +15,7 @@ jobs:
           node-version: '20'
       - id: pwd
         run: |
-          echo -n pwd= >> $GITHUB_OUPUT
+          echo -n pwd= >> $GITHUB_OUTPUT
           pwd >> $GITHUB_OUTPUT
       - uses: sigyl-actions/xml-schema@main
         with:
