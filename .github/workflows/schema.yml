@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: RouxAntoine/checkout@v3.5.4
       - id: ls-files
-        uses: sigyl-actions/ls-files
+        uses: sigyl-actions/files-ls@v0.0.1
         with:
           folder: '.'
           regex: ^.+\.(([aA][xX][mM][lL]))$
