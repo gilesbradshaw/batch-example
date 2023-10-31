@@ -19,8 +19,8 @@ jobs:
     needs: list-axmls
     runs-on: ubuntu-latest
     strategy:
-        matrix:
-            manifest: ${{ fromJSON(needs.list-axmls.outputs.matrix) }}
+      matrix:
+        manifest: ${{ fromJSON(needs.list-axmls.outputs.matrix) }}
     steps:
       - uses: RouxAntoine/checkout@v3.5.4
         with:
