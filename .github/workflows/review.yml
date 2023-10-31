@@ -1,0 +1,13 @@
+name: loop
+run-name: from develop to build
+on:
+  pull_request_review:
+jobs:
+  list-manifests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: json
+        run: echo $JSON
+        env:
+          JSON: ${{ toJSON(github) }}
+  
