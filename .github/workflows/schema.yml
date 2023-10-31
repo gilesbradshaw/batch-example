@@ -27,6 +27,7 @@ jobs:
           token: ${{ secrets.BOT_TOKEN }}
           fetch-depth: '1'
       - run: echo ${{ matrix.manifest }}
+      - run: echo ${{ toJSON(matrix) }}
 
   xml-linters:
     runs-on: ubuntu-latest
