@@ -1,0 +1,27 @@
+name: "Dynamic Matix"
+
+on:
+  pull_request:
+  push:
+
+jobs:
+  bar:
+    name: Bar
+    runs-on: ubuntu-latest
+    steps:
+      - id: output_data
+        run: |
+          echo '::set-output name=matrix::"{"package": ["a", "b"]}"'
+    outputs:
+      matrix: ${{ steps.output_data.outputs.matrix }}
+
+  foo:
+    name: Foo
+    needs: [ bar ]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix: ${{ fromJson(needs.bar.outputs.matrix) }}
+    steps:
+      - name: foo ${{ matrix.package }}
+        run: |
+          echo 'Matrix "${{ matrix.package }}" JSON: ${{ toJSON(matrix) }} ${{ needs.bar.outputs.matrix }}'
