@@ -9,7 +9,7 @@ jobs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
     - id: set-matrix
-      run: echo "::set-output name=matrix::[\"afile\", "\another file\"]"
+      run: echo "::set-output name=matrix::[\"afile\", \"another file\"]"
   job2:
     needs: job1
     runs-on: ubuntu-latest
