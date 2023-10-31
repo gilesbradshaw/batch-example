@@ -1,4 +1,4 @@
-name: Lint
+name: lint xml
 
 on:
   push:
@@ -7,13 +7,13 @@ jobs:
   xml-linters:
     runs-on: ubuntu-latest
     steps:
-    - uses: RouxAntoine/checkout@v3.5.4
+      - uses: RouxAntoine/checkout@v3.5.4
+          with:
+            token: ${{ secrets.BOT_TOKEN }}
+      #- name: Download schema
+      #  run: wget https://apps.nextcloud.com/schema/apps/info.xsd
+      - name: Validate info.xml using XML schema info.xsd
+        uses: ChristophWurst/xmllint-action@v1
         with:
-          token: ${{ secrets.BOT_TOKEN }}
-    #- name: Download schema
-    #  run: wget https://apps.nextcloud.com/schema/apps/info.xsd
-    - name: Validate info.xml using XML schema info.xsd
-      uses: ChristophWurst/xmllint-action@v1
-      with:
-        xml-file: ./afile.axml
-        xml-schema-file: ./AreaModel.xsd
+          xml-file: ./afile.axml
+          xml-schema-file: ./AreaModel.xsd
