@@ -18,6 +18,20 @@ jobs:
     steps:
     - run: echo ${{ matrix.project }}
     - run: echo ${{ matrix.config }}
+  job3:
+    needs: job1
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+        - project: foo
+          config: Debug
+        - project: bar
+          config: Release
+    steps:
+    - run: echo ${{ matrix.project }}
+    - run: echo ${{ matrix.config }}
+
   list-axmls:
     runs-on: ubuntu-latest
     outputs:
