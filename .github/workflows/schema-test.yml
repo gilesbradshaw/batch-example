@@ -13,13 +13,19 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '20'
+      - id: pwd
+        run: |
+          echo -n pwd= >> $GITHUB_OUPUT
+          pwd >> $GITHUB_OUTPUT
       - uses: sigyl-actions/xml-schema@main
         with:
+          schema_path: ${{ steps.pwd.outputs.pwd}}
           folder: '.'
           regex: ^.+\.(([aA][xX][mM][lL]))$
           xsd: ./.github/schemas/AreaModel.xsd
       - uses: sigyl-actions/xml-schema@main
         with:
+          schema_path: ${{ steps.pwd.outputs.pwd}}
           folder: './recipes'
           regex: ^.+\.(([oO][xX][mM][lL])|([uU][xX][mM][lL])|([pP][xX][mM][lL]))$
           xsd: ./.github/schemas/MasterRecipe.xsd
