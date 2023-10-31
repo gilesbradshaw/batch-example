@@ -24,7 +24,7 @@ jobs:
     strategy:
       matrix:
         #manifest: ${{ fromJSON(needs.job1.outputs.matrix) }}
-        manifest: ${{ fromJson(["a file"]) }}
+        manifest: ${{ fromJson("[/"a file/"]") }}
         #manifest:
         #- afile
         #- another file
