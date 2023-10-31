@@ -23,8 +23,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        #manifest: ${{ fromJSON(needs.job1.outputs.matrix) }}
-        manifest: ${{ fromJson("[/"a file/"]") }}
+        manifest: ${{ fromJSON(needs.job1.outputs.matrix) }}
+        #manifest: ${{ fromJson("[/"a file/"]") }}
         #manifest:
         #- afile
         #- another file
