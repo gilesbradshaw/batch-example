@@ -1,0 +1,30 @@
+name: schema-test
+run-name: test setting matix from JSON
+on:
+  push:
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: RouxAntoine/checkout@v3.5.4
+        with:
+          token: ${{ secrets.BOT_TOKEN }}
+          fetch-depth: '1'
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+      - uses: sigyl-actions/xml-format@main
+        with:
+          folder: '.'
+          regex: ^.+\.(([aA][xX][mM][lL]))$
+      - uses: sigyl-actions/xml-format@main
+        with:
+          folder: './recipes'
+          regex: ^.+\.(([oO][xX][mM][lL])|([uU][xX][mM][lL])|([pP][xX][mM][lL]))$
+      - uses: sigyl-actions/check-for-changes
+        id: has-changes
+      - name: commit if changed
+        if: ${{ steps.has-changes.outputs.changes }} == "true"
+        run: |
+          git add -A
+          git commit -a -m "${{ github.ref_name }} -> ${{ steps.build-branch.outputs.branch }} "
