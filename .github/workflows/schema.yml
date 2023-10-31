@@ -14,7 +14,10 @@ jobs:
     needs: job1
     runs-on: ubuntu-latest
     steps:
+    - id: tryme
+      run: echo "::set-output name=matrix::{\"include\":[{\"project\":\"foo\",\"config\":\"Debug\"},{\"project\":\"bar\",\"config\":\"Release\"}]}"
     - run: echo ${{ needs.job1.outputs.matrix }}
+    - run: echo ${{ steps.tryme.outputs.matrix }}
   job2:
     needs: job1
     runs-on: ubuntu-latest
