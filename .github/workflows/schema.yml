@@ -2,9 +2,31 @@ name: release
 run-name: from develop to build
 on:
   push:
-    branches:
-      - schemas
 jobs:
+  list-axmls:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.ls-files.outputs.files }}
+    steps:
+      - uses: RouxAntoine/checkout@v3.5.4
+      - id: ls-files
+        uses: sigyl-actions/ls-files
+        with:
+          folder: '.'
+          regex: ^.+\.(([aA][xX][mM][lL]))$
+  lint:
+    needs: list-axmls
+    runs-on: ubuntu-latest
+    strategy:
+        matrix:
+            manifest: ${{ fromJson(needs.list-axmls.outputs.matrix) }}
+    steps:
+      - uses: RouxAntoine/checkout@v3.5.4
+        with:
+          token: ${{ secrets.BOT_TOKEN }}
+          fetch-depth: '1'
+      - run: echo ${{ matrix.manifest }}
+
   xml-linters:
     runs-on: ubuntu-latest
     steps:
