@@ -20,6 +20,6 @@ jobs:
           xsd: ./.github/schemas/AreaModel.xsd
       - uses: sigyl-actions/xml-schema@main
         with:
-          folder: 'recipes'
+          folder: './recipes'
           regex: ^.+\.(([oO][xX][mM][lL])|([uU][xX][mM][lL])|([pP][xX][mM][lL]))$
           xsd: ./.github/schemas/MasterRecipe.xsd
