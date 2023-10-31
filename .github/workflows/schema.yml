@@ -28,6 +28,7 @@ jobs:
           fetch-depth: '1'
       - run: echo ${{ matrix.manifest }}
       - run: echo ${{ toJSON(matrix) }}
+      - run: echo ${{ needs.list-axmls.outputs.matrix }}
 
   xml-linters:
     runs-on: ubuntu-latest
