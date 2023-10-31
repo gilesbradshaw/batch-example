@@ -14,6 +14,7 @@ jobs:
         with:
           folder: '.'
           regex: ^.+\.(([aA][xX][mM][lL]))$
+      - run: echo ${{ steps.ls-files.outputs.files }}
   lint:
     needs: list-axmls
     runs-on: ubuntu-latest
