@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <!-- edited with XML Spy v4.0 U (http://www.xmlspy.com) by Paul D'Mura (Rockwell Automation) -->
 <xsd:schema targetNamespace="urn:Rockwell/MasterRecipe" xmlns="urn:Rockwell/MasterRecipe" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:am="urn:Rockwell/AreaModel" elementFormDefault="qualified">
-	<xsd:import namespace="urn:Rockwell/AreaModel" schemaLocation="AreaModel.xsd"/>
+	<xsd:import namespace="urn:Rockwell/AreaModel" schemaLocation="./.github/schemas/AreaModel.xsd"/>
 	<xsd:annotation>
 		<xsd:documentation>Master Recipe Schema - Copyright 2020</xsd:documentation>
 	</xsd:annotation>
