@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        manifest: ${{ fromJSON('["afile.axml"]' }}
+        manifest: [hello]
     steps:
       - uses: RouxAntoine/checkout@v3.5.4
         with:
