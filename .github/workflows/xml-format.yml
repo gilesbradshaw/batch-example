@@ -23,6 +23,8 @@ jobs:
           regex: ^.+\.(([oO][xX][mM][lL])|([uU][xX][mM][lL])|([pP][xX][mM][lL]))$
       - uses: sigyl-actions/check-for-changes@v1.0.0
         id: has-changes
+      - uses: ./.github/actions/git-prep
+        if: ${{ steps.has-changes.outputs.changes }} == "true"
       - name: commit if changed
         if: ${{ steps.has-changes.outputs.changes }} == "true"
         run: |
