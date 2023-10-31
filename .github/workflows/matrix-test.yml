@@ -11,7 +11,7 @@ jobs:
     steps:
       - id: output_data
         run: |
-          echo '::set-output name=matrix::"{"package": ["a", "b"]}"'
+          echo 'matrix="{"package": ["a", "b"]}"' >> $GITHUB_OUTPUT
     outputs:
       matrix: ${{ steps.output_data.outputs.matrix }}
 

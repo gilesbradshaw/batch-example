@@ -1,4 +1,4 @@
-name: schema
+name: schema-test
 run-name: test setting matix from JSON
 on:
   push:
