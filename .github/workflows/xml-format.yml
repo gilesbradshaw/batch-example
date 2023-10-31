@@ -21,7 +21,7 @@ jobs:
         with:
           folder: './recipes'
           regex: ^.+\.(([oO][xX][mM][lL])|([uU][xX][mM][lL])|([pP][xX][mM][lL]))$
-      - uses: sigyl-actions/check-for-changes
+      - uses: sigyl-actions/check-for-changes@v1.0.0
         id: has-changes
       - name: commit if changed
         if: ${{ steps.has-changes.outputs.changes }} == "true"
