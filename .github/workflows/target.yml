@@ -10,3 +10,7 @@ jobs:
         with:
           token: ${{ secrets.BOT_TOKEN }}
       - run: git status
+      - name: json
+        run: echo $JSON
+        env:
+          JSON: ${{ toJSON(github) }}
