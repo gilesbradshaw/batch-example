@@ -9,15 +9,15 @@ jobs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
     - id: set-matrix
-      run: echo "::set-output name=matrix::{\"include\":[{\"project\":\"foo\",\"config\":\"Debug\"},{\"project\":\"bar\",\"config\":\"Release\"}]}"
+      run: echo "::set-output name=matrix::[\"hello\"]"
   job2:
     needs: job1
     runs-on: ubuntu-latest
     strategy:
-      matrix: ${{fromJson(needs.job1.outputs.matrix)}}
+      matrix:
+        manifest: ${{fromJson(needs.job1.outputs.matrix)}}
     steps:
-    - run: echo ${{ matrix.project }}
-    - run: echo ${{ matrix.config }}
+    - run: echo ${{ matrix.manifest }}
   list-axmls:
     runs-on: ubuntu-latest
     outputs:
