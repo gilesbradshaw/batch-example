@@ -23,11 +23,13 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        manifest: ${{ fromJSON(needs.job1.outputs.matrix) }}
+        # manifest: ${{ fromJSON(needs.job1.outputs.matrix) }}
+        manifest:
+        - afile
+        - another file
     steps:
     - run: echo ${{ needs.job1.outputs.matrix }}
     - run: echo ${{ matrix.manifest }}
-    - run: echo ${{ matrix.config }}
   job3:
     needs: job1
     runs-on: ubuntu-latest
