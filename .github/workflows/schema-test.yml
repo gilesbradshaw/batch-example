@@ -10,11 +10,9 @@ jobs:
         with:
           token: ${{ secrets.BOT_TOKEN }}
           fetch-depth: '1'
-      - id: get-latest-release
-        uses: sigyl-actions/gitea-action-get-latest-release@develop/no-error
-        #uses: ./.github/actions/gitea-action-get-latest-release
+      - uses: actions/setup-node@v3
         with:
-          token: ${{ secrets.BOT_TOKEN }}
+          node-version: '20'
       - uses: sigyl-actions/xml-schema@main
         with:
           folder: '.'
