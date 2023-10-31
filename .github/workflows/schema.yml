@@ -17,7 +17,7 @@ jobs:
     - id: tryme
       run: echo "::set-output name=matrix::[\"afile\"]"
     - run: echo ${{ needs.job1.outputs.matrix }}
-    - run: echo ${{ steps.tryme.outputs.matrix }}
+    - run: echo ${{ fromJson(steps.tryme.outputs.matrix) }}
   job2:
     needs: job1
     runs-on: ubuntu-latest
