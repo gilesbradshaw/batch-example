@@ -14,8 +14,9 @@ jobs:
     needs: job1
     runs-on: ubuntu-latest
     strategy:
-      matrix: ${{fromJSON(needs.job1.outputs.matrix)}}
+      matrix: ${{ fromJSON(needs.job1.outputs.matrix) }}
     steps:
+    - run: echo ${{ needs.job1.outputs.matrix }}
     - run: echo ${{ matrix.project }}
     - run: echo ${{ matrix.config }}
   job3:
