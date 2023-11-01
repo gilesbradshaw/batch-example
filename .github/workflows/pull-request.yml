@@ -7,6 +7,10 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - name: json
+        run: echo $JSON
+        env:
+          JSON: ${{ toJSON(github) }}
       - uses: RouxAntoine/checkout@v3.5.4
         with:
           token: ${{ secrets.BOT_TOKEN }}
