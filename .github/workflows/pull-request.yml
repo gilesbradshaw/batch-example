@@ -11,7 +11,7 @@ jobs:
         run: echo $JSON
         env:
           JSON: ${{ toJSON(github) }}
-      - uses: RouxAntoine/checkout@v3.5.4
+      - uses: https://sigyl.com:3000/actions/checkout@v3.5.4
         with:
           token: ${{ secrets.BOT_TOKEN }}
           fetch-depth: '1'
