@@ -1,0 +1,14 @@
+name: target
+on:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: RouxAntoine/checkout@v3.5.4
+      - run: git status
+      - name: json
+        run: echo $JSON
+        env:
+          JSON: ${{ toJSON(github) }}
