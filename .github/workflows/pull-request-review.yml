@@ -6,6 +6,10 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - uses: RouxAntoine/checkout@v3.5.4
+        with:
+          token: ${{ secrets.BOT_TOKEN }}
+          fetch-depth: '1'
       - uses: sigyl-actions/gitea-request-review@main
         with:
           token: ${{ secrets.BOT_TOKEN }}
