@@ -17,6 +17,7 @@ jobs:
         with:
           node-version: '20'
       - uses: sigyl-actions/gitea-request-review@main
+        if: github.event.repository.review.type != 'pull_request_review_rejected'
         with:
           token: ${{ secrets.BOT_TOKEN }}
           pr: ${{ github.event.number }}
