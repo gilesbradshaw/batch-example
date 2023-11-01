@@ -8,11 +8,9 @@ jobs:
     steps:
       - uses: sigyl-actions/gitea-request-review@main
         with:
-          - token: ${{ secrets.BOT_TOKEN }}
-          - pr: ${{ github.event.number }}
-          - teams:
-            - reviewers
-            - reviewers-2
+          token: ${{ secrets.BOT_TOKEN }}
+          pr: ${{ github.event.number }}
+          teams: reviewers,reviewers-2
       - name: json
         run: echo $JSON
         env:
