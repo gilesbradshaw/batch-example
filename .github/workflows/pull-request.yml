@@ -11,9 +11,8 @@ jobs:
         run: echo $JSON
         env:
           JSON: ${{ toJSON(github) }}
-      - uses: https://sigyl.com:3001/actions/checkout@fix/1370-sub-path-missing
+      - uses: RouxAntoine/checkout@v3.5.4
         with:
-          token: ${{ secrets.BOT_TOKEN }}
           fetch-depth: '1'
       - uses: actions/setup-node@v3
         with:
@@ -23,7 +22,3 @@ jobs:
           token: ${{ secrets.BOT_TOKEN }}
           pr: ${{ github.event.number }}
           teams: reviewers,reviewers-2
-      - name: json
-        run: echo $JSON
-        env:
-          JSON: ${{ toJSON(github) }}

@@ -6,10 +6,16 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - name: json
+        run: echo $JSON
+        env:
+          JSON: ${{ toJSON(github) }}
       - uses: RouxAntoine/checkout@v3.5.4
         with:
-          token: ${{ secrets.BOT_TOKEN }}
           fetch-depth: '1'
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '20'
       - uses: sigyl-actions/gitea-request-review@main
         with:
           token: ${{ secrets.BOT_TOKEN }}
